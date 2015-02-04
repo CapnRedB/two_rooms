@@ -12,4 +12,15 @@ class Card < ActiveRecord::Base
       "You are not on a team"
     end
   end
+
+  def icon
+    case faction
+    when "Blue"
+      "images/star.png"
+    when "Red"
+      "images/bomb.png"
+    else
+      ""
+    end
+  end
 end
