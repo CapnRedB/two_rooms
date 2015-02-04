@@ -1,0 +1,37 @@
+%p#notice= notice
+
+%p Full Card:
+= render partial: "full", object: @card
+
+%p Short Card:
+= render partial: "short", object: @card
+
+%hr
+%p
+  %b Title:
+  = @card.title
+%p
+  %b Subtitle:
+  = @card.subtitle
+%p
+  %b Short desc:
+  = @card.short_desc
+%p
+  %b Long desc:
+  = @card.long_desc
+%p
+  %b Color:
+  = @card.color
+%p
+  %b Faction:
+  = @card.faction
+%p
+  %b Strategy:
+  = @card.strategy
+%p
+  %b Url:
+  = @card.url
+
+= link_to 'Edit', edit_card_path(@card)
+\|
+= link_to 'Back', cards_path

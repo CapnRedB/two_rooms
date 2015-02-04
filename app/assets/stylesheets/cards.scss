@@ -1,0 +1,66 @@
+// Place all the styles related to the cards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.card {
+	.color {
+		&.Blue { color: blue}
+		&.Red { color: red}
+		&.Grey { color: grey}
+
+		.faction {
+			display: inline-block;
+			padding-left: 20px;
+
+			background-position: left center;
+			background-repeat: no-repeat;
+			background-size: 16px;
+
+			&.Blue{ background-image: url(/images/star.png)}
+			&.Red{ background-image: url(/images/bomb.png)}
+		}
+	}
+
+}
+
+div.card {
+
+	text-align: center;
+
+	div.color {
+		width: 176px;
+		height: 249px;
+
+		background-position: center top;
+		background-repeat: no-repeat;
+
+		&.Blue{ background-image: url(/images/registered-blue.png)}
+		&.Red{ background-image: url(/images/registered-red.png)}
+		&.Grey{ background-image: url(/images/registered-grey.png)}
+
+		.title {
+			font-weight: bold;
+
+			padding: 4em 0.25em 0;
+		}
+
+		.subtitle {
+			font-style: italic;
+			padding: 0 0.25em 1em;
+		}
+		.description {
+			font-size: smaller;
+			padding: 0 0.25em 3em;
+		}
+
+		div.faction { 
+			background-position: center center;
+			background-size: auto;
+			padding: 0;
+			height: 64px;
+			width: 64px;
+		}
+
+	}
+}
