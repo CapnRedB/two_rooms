@@ -2,6 +2,8 @@ class Card < ActiveRecord::Base
   COLORS = ["Blue", "Red", "Grey"].freeze
   FACTIONS = COLORS
 
+  default_scope { order("id asc") }
+
   def team
     case faction
     when "Blue"
