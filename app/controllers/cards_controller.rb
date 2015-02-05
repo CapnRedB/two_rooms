@@ -42,6 +42,21 @@ class CardsController < ApplicationController
     end
   end
 
+  def flip
+    @card = Card.find(params[:card_id])
+    flipped = @card.flip
+    respond_to do |format|
+      if flipped.save
+        format.html { redirect_to flipped, notice: 'Card was successfully flipped.' }
+        format.json { render :show, status: :created, location: flipped }
+      else
+        format.html { render :new }
+        format.json { render json: flipped.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update

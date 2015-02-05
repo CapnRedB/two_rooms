@@ -17,10 +17,10 @@ class Cardset
   }.freeze
 
   OFFSETS = {
-    icon:        {at: [ 21.mm, 80.mm], align: :center},
+    icon:        {at: [ 20.mm, 85.mm], width: 64, height: 64, align: :center},
     title:       {at: [ 2.mm, 55.mm], width: 58.mm, height: 10.mm, align: :center},
-    subtitle:    {at: [ 2.mm, 45.mm], width: 58.mm, height: 10.mm, align: :center},
-    description: {at: [ 2.mm, 25.mm], width: 58.mm, height: 10.mm, align: :center},
+    subtitle:    {at: [ 2.mm, 50.mm], width: 58.mm, height: 10.mm, align: :center},
+    description: {at: [ 2.mm, 45.mm], width: 58.mm, height: 20.mm, align: :center},
   }.freeze
 
   CARD_SIZE = {
@@ -48,7 +48,7 @@ class Cardset
       end
 
       @pdf.bounding_box(offset, Cardset::CARD_SIZE) do
-        #@pdf.transparent(0.5) { @pdf.stroke_bounds }
+        @pdf.transparent(0.5) { @pdf.stroke_bounds }
         # @pdf.text "#{offset[0]}, #{offset[1]}"
         # @pdf.text card.title
 
@@ -62,7 +62,7 @@ class Cardset
           @pdf.text_box card.short_desc, Cardset::OFFSETS[:description]
         end
 
-        @pdf.image "#{Rails.root.join('public')}/#{card.icon}", Cardset::OFFSETS[:icon]
+        @pdf.image "#{Rails.root.join('public')}/#{card.print_icon}", Cardset::OFFSETS[:icon]
       end
 
     end

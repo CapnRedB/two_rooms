@@ -25,4 +25,43 @@ class Card < ActiveRecord::Base
       ""
     end
   end
+
+  def print_icon
+    case faction
+    when "Blue"
+      "images/print-star.png"
+    when "Red"
+      "images/print-bomb.png"
+    else
+      ""
+    end
+  end
+
+
+  def flip
+    map = { 
+      "Blue" => "Red",
+      "Red" => "Blue",
+      "Grey" => "Grey",
+    }
+
+    flipped = dup
+    flipped.color = map[color]
+    flipped.faction = map[faction]
+
+    [:subtitle, :short_desc, :long_desc, :strategy].each do |field|
+
+      val = flipped.send(field)
+
+      # swap
+      val.gsub!(/Blue/, "Cyan")
+      val.gsub!(/Red/, "Blue")
+      val.gsub!(/Cyan/, "Red")
+
+      flipped.send("#{field}=", val)
+    end
+
+    flipped
+  end
+
 end
