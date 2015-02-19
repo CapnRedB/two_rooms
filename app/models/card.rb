@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
   COLORS = ["Blue", "Red", "Grey"].freeze
   FACTIONS = COLORS
 
-  default_scope { order("id asc") }
+  default_scope { order("sort_order asc") }
 
   def team
     case faction
@@ -22,7 +22,7 @@ class Card < ActiveRecord::Base
     when "Red"
       "images/bomb.png"
     else
-      ""
+      nil
     end
   end
 

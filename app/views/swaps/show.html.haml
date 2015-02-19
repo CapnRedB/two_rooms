@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Round:
+  = @swap.round_id
+%p
+  %b Player min:
+  = @swap.player_min
+%p
+  %b Player max:
+  = @swap.player_max
+%p
+  %b Count:
+  = @swap.count
+
+= link_to 'Edit', edit_swap_path(@swap)
+\|
+= link_to 'Back', swaps_path

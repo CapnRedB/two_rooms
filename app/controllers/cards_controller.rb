@@ -56,6 +56,26 @@ class CardsController < ApplicationController
     end
   end
 
+  def sort
+    order = params[:order].split(",")
+    cur = 1
+    order.each do |card_id|
+      card = Card.find(card_id)
+      unless card.nil?
+        card.sort_order = cur 
+        card.save
+        cur += 1
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card order updated.' }
+      format.json { render json: { code: :sort_updated, message: "Card order updated."} }
+    end
+
+  end
+
+
 
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
@@ -89,6 +109,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:title, :subtitle, :short_desc, :long_desc, :color, :faction, :strategy, :url)
+      params.require(:card).permit(:title, :subtitle, :short_desc, :long_desc, :color, :faction, :strategy, :url, :quantity)
     end
 end

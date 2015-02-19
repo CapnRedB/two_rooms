@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @round.type
+%p
+  %b Number:
+  = @round.number
+%p
+  %b Duration:
+  = @round.duration
+
+= link_to 'Edit', edit_round_path(@round)
+\|
+= link_to 'Back', rounds_path

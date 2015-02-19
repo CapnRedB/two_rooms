@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :swaps
+
+  resources :rounds
+
   resources :cards do
     get 'flip'
   end
+  post 'cards/sort' => "cards#sort"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
