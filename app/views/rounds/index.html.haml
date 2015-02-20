@@ -3,9 +3,10 @@
 %table
   %thead
     %tr
-      %th Type
+      %th Game type
       %th Number
       %th Duration
+      %th 
       %th
       %th
       %th
@@ -13,13 +14,29 @@
   %tbody
     - @rounds.each do |round|
       %tr
-        %td= round.type
+        %td= round.game_type
         %td= round.number
         %td= round.duration
+        %td
+          - unless round.swaps.empty?
+            %table
+              %thead
+                %tr
+                  %th Players
+                  %th Swaps
+              %tbody
+                - round.swaps.each do |swap|
+                  %tr
+                    %td= swap.range
+                    %td= swap.count
+
         %td= link_to 'Show', round
+        %td= link_to 'Swaps', round_swaps_path(round)
         %td= link_to 'Edit', edit_round_path(round)
         %td= link_to 'Destroy', round, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
 = link_to 'New Round', new_round_path
+\|
+= link_to "Generate PDF", rounds_path(format: :pdf)

@@ -13,6 +13,6 @@
   %b Count:
   = @swap.count
 
-= link_to 'Edit', edit_swap_path(@swap)
+= link_to 'Edit', edit_round_swap_path(@round, @swap)
 \|
-= link_to 'Back', swaps_path
+= link_to 'Back', round_swaps_path(@round)

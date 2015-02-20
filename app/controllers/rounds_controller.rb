@@ -5,6 +5,11 @@ class RoundsController < ApplicationController
   # GET /rounds.json
   def index
     @rounds = Round.all
+
+    respond_to do |format|
+      format.html
+      format.pdf { send_data Round.render, type: "application/pdf", disposition: "inline" }
+    end
   end
 
   # GET /rounds/1
@@ -69,6 +74,6 @@ class RoundsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
-      params.require(:round).permit(:type, :number, :duration)
+      params.require(:round).permit(:game_type, :number, :duration)
     end
 end

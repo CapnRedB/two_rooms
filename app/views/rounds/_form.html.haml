@@ -7,13 +7,14 @@
           %li= msg
 
   .field
-    = f.label :type
-    = f.text_field :type
+    = f.label :game_type
+    = f.select :game_type, Round::Types
   .field
     = f.label :number
     = f.number_field :number
   .field
     = f.label :duration
     = f.number_field :duration
+    minutes
   .actions
     = f.submit 'Save'

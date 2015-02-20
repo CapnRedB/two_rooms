@@ -18,7 +18,7 @@ class RoundsControllerTest < ActionController::TestCase
 
   test "should create round" do
     assert_difference('Round.count') do
-      post :create, round: { duration: @round.duration, number: @round.number, type: @round.type }
+      post :create, round: { duration: @round.duration, game_type: @round.game_type, number: @round.number }
     end
 
     assert_redirected_to round_path(assigns(:round))
@@ -35,7 +35,7 @@ class RoundsControllerTest < ActionController::TestCase
   end
 
   test "should update round" do
-    patch :update, id: @round, round: { duration: @round.duration, number: @round.number, type: @round.type }
+    patch :update, id: @round, round: { duration: @round.duration, game_type: @round.game_type, number: @round.number }
     assert_redirected_to round_path(assigns(:round))
   end
 

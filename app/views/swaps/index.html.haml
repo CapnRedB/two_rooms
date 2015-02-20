@@ -1,11 +1,9 @@
-%h1 Listing swaps
+%h1= "Listing swaps for #{@round}"
 
 %table
   %thead
     %tr
-      %th Round
-      %th Player min
-      %th Player max
+      %th Players
       %th Count
       %th
       %th
@@ -14,14 +12,14 @@
   %tbody
     - @swaps.each do |swap|
       %tr
-        %td= swap.round_id
-        %td= swap.player_min
-        %td= swap.player_max
+        %td= swap.range
         %td= swap.count
-        %td= link_to 'Show', swap
-        %td= link_to 'Edit', edit_swap_path(swap)
-        %td= link_to 'Destroy', swap, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', round_swap_path(@round, swap)
+        %td= link_to 'Edit', edit_round_swap_path(@round, swap)
+        %td= link_to 'Destroy', round_swap_path(@round, swap), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Swap', new_swap_path
+= link_to 'New Swap', new_round_swap_path(@round)
+\|
+= link_to 'Back', rounds_path

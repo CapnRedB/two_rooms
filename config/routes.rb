@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :swaps
-
+  
   resources :rounds
+
+  resources :rounds do
+    resources :swaps
+  end
+
 
   resources :cards do
     get 'flip'

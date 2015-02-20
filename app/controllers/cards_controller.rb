@@ -8,7 +8,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf { send_data Cardset.all.render, type: "application/pdf", disposition: "inline" }
+      format.pdf { send_data Card.render, type: "application/pdf", disposition: "inline" }
     end
   end
 

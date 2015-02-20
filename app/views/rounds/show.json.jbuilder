@@ -1,1 +1,1 @@
-json.extract! @round, :id, :type, :number, :duration, :created_at, :updated_at
+json.extract! @round, :id, :game_type, :number, :duration, :created_at, :updated_at

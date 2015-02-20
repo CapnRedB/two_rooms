@@ -1,7 +1,7 @@
-%h1 Editing swap
+%h1= "Editing swap for #{@round}"
 
 = render 'form'
 
-= link_to 'Show', @swap
+= link_to 'Show', round_swap_path(@round, @swap)
 \|
-= link_to 'Back', swaps_path
+= link_to 'Back', round_swaps_path(@round)

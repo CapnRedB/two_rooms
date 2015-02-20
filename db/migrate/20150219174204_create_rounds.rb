@@ -1,7 +1,7 @@
 class CreateRounds < ActiveRecord::Migration
   def change
     create_table :rounds do |t|
-      t.string :type
+      t.string :game_type
       t.integer :number
       t.integer :duration
 
