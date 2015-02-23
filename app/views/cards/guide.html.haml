@@ -1,0 +1,29 @@
+%header
+  %h2 Two Rooms and a Boom 
+  %h1 Character Guide
+- @cards.group_by(&:title).each do |title, cards|
+  .guide
+    %header
+      %h2
+        - cards.each do |card|
+          = render partial: 'short', object: card
+          &nbsp;
+    - card = cards.first
+    %p= markdown card.long_desc
+    .row
+      %div
+        %h4 Strategy
+        %p= card.strategy
+      %div
+        %h4 Allies
+        %p
+      %div
+        %h4 Enemies
+        %p
+      %div
+        %h4 Requires
+        %p
+
+.no-print
+  = link_to "Back", cards_path
+

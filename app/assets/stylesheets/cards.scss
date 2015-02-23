@@ -64,3 +64,27 @@ div.card {
 
 	}
 }
+
+.guide {
+
+	.row {
+		padding-left: 2em;
+		div {
+			width: 24%; 
+			display: inline-block; 
+			vertical-align: top;
+
+			p {
+				height: 4em;
+			}
+		}
+
+	}
+
+}
+
+@media print {
+	.guide {
+		page-break-inside: avoid;
+	}
+}

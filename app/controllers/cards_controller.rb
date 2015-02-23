@@ -12,6 +12,15 @@ class CardsController < ApplicationController
     end
   end
 
+  def guide
+    @cards = Card.unscoped.order("title ASC, color ASC").all
+    respond_to do |format|
+      format.html
+      format.pdf { send_data Card.guide, type: "application/pdf", disposition: "inline" }
+    end
+  end
+
+
   # GET /cards/1
   # GET /cards/1.json
   def show

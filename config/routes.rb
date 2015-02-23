@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   end
 
 
+  get 'cards/guide' => "cards#guide"
   resources :cards do
     get 'flip'
   end
   post 'cards/sort' => "cards#sort"
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -83,3 +83,8 @@ div {
   }
 }
 
+@media print {
+  .no-print {
+    display: none;
+  }
+}

@@ -59,7 +59,7 @@ class Round < ActiveRecord::Base
       document.bounding_box(Round::Offsets[:swaps][:at], Round::Offsets[:swaps]) do
 
         document.font("Courier", size: 8) do
-          data = [ ["Players", "Hostages"], [" ", " "] ]
+          data = [ ["Players", "Hostages"] ]
           swaps.each do |swap|
             data << [swap.range , swap.count.to_s]
           end
