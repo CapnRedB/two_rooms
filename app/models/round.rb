@@ -28,7 +28,7 @@ class Round < ActiveRecord::Base
   #for pdf creation
 
   Offsets = {
-    duration: { at: [2.mm, 60.mm], width: 58.mm, height: 10.mm, align: :center },
+    duration: { at: [2.mm, 58.mm], width: 58.mm, height: 10.mm, align: :center },
     title:    { at: [2.mm, 55.mm], width: 58.mm, height: 10.mm, align: :center },
     swaps:    { at: [2.mm, 50.mm], width: 58.mm, height: 40.mm, align: :center }
   }.freeze 
@@ -36,7 +36,10 @@ class Round < ActiveRecord::Base
   # include Printable::Cardable
 
   def self.render
-    Printable::Cards.new.render(Round.all)
+    cards = Round.all
+    cards << LeaderCard.new
+
+    Printable::Cards.new.render(cards)
   end
 
   def quantity
@@ -66,7 +69,7 @@ class Round < ActiveRecord::Base
 
           document.table(data, cell_style: {width: 29.mm }) do
           # document.table(data, position: :center) do
-            cells.padding = 0
+            cells.padding = 1
             cells.borders = []
             row(0).borders = [:bottom]
             row(0).style = :bold
@@ -81,3 +84,15 @@ class Round < ActiveRecord::Base
   end
 
 end
+
+class LeaderCard
+  def quantity 
+    1
+  end
+  def render(document)
+    document.font("Helvetica", style: :bold, size: 40) do
+      document.text_box "Leader", at: [2.mm, 55.mm], width: 58.mm, height: 20.mm, align: :center
+    end
+  end
+end
+

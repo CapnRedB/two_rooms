@@ -20,10 +20,15 @@ module Printable
       height: 88.mm
     }.freeze 
 
+    def initialize()
+      super
+      @card_number = 0
+    end
+
     def render(set)
       #set = []
       super() do
-        @card_number = 0
+        # @card_number = 0
         set.each do |card|
           card.quantity.times do
             render_card card
