@@ -1,28 +1,12 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone the repository. You'll need postgres and rails.
 
-Things you may want to cover:
+(this has not yet been tested)
 
-* Ruby version
+    $ bundle install
+    $ rake db:setup
+    $ rake db:seed
+    $ rails s
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Then visit (http://localhost:3000)
