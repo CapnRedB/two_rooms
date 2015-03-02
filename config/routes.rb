@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :card_relationships
+
   resources :rounds
 
   resources :rounds do

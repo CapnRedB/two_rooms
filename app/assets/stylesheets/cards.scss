@@ -66,6 +66,7 @@ div.card {
 }
 
 .guide {
+	font-size: smaller;
 
 	.row {
 		padding-left: 2em;
@@ -75,7 +76,7 @@ div.card {
 			vertical-align: top;
 
 			p {
-				height: 4em;
+				vertical-align: top;
 			}
 		}
 

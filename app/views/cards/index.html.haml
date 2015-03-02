@@ -18,6 +18,7 @@
           %div= card.subtitle
         %td= card.short_desc
         %td= card.long_desc
+        %td= link_to 'Show', card
         %td= link_to 'Move', '#', class: :move
         %td= link_to 'Edit', edit_card_path(card)
         %td= link_to 'Flip', card_flip_path(card)
@@ -27,6 +28,8 @@
 
 = link_to 'New Card', new_card_path
 \|
+= link_to "Relationships", card_relationships_path
+%br
 = link_to "Card PDF", cards_path(format: :pdf)
 \|
 = link_to "Character Guide", cards_guide_path # (format: :pdf)

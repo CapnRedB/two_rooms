@@ -5,6 +5,64 @@ class Card < ActiveRecord::Base
   FACTIONS = COLORS
 
   default_scope { order("sort_order asc") }
+  scope :alpha, -> { order("title asc, color asc")}
+  
+  has_many :relationships, :class_name => "CardRelationship", :foreign_key => "card_id"
+  has_many :relations, :through => :relationships, :source => :to
+  has_many :inverse_relationships, :class_name => "CardRelationship", :foreign_key => "to_id"
+  has_many :inverse_relations, :through => :inverse_relationships, :source => :card
+
+  def relationships_grouped
+    relationships.group_by(&:description)
+  end
+
+  def inverse_relationships_grouped
+    inverse_relationships.group_by(&:description)
+  end
+
+  # def enemies
+  #   relationships_grouped["Enemy"].collect(&:to) unless relationships_grouped["Enemy"].nil?
+  # end
+
+  # def enemies_of
+  #   unless inverse_relationships_grouped["Enemy"].nil?
+  #     enemies_of = inverse_relationships_grouped["Enemy"].collect(&:card)
+
+  #     mutual = enemies
+  #     unless mutual.nil?
+  #       enemies_of.reject! { |enemy_of| mutual.include?(enemy_of) }
+  #     end
+  #     enemies_of
+  #   end
+  # end
+  RelationshipTypes = { enemies: "Enemy", allies: "Ally", requires: "Required", recommends: "Recommended" }.freeze
+  RelationshipTypes.each do |method, description|
+
+    define_method(method.to_s) do 
+      unless relationships_grouped[description].nil?
+        relationships_grouped[description].collect(&:to)
+      else
+        []
+      end
+    end
+
+    define_method(method.to_s + "_of") do
+      unless inverse_relationships_grouped[description].nil?
+        inverse = inverse_relationships_grouped[description].collect(&:card)
+
+        mutual = send(method)
+        unless mutual.nil?
+          inverse.reject! { |inv| mutual.include? inv }
+        end
+
+        inverse
+      else
+        []
+      end
+    end
+  end
+  def required_by; requires_of; end
+  def recommended_by; recommends_of; end
 
   def team
     case faction
@@ -17,6 +75,9 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def title_with_color
+    "#{title} (#{color})"
+  end
   def icon
     case faction
     when "Blue"

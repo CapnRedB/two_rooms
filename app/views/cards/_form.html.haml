@@ -27,9 +27,12 @@
   .field
     = f.label :strategy
     = f.text_area :strategy
-  / .field
-  /   = f.label :url
-  /   = f.text_field :url
+  .field
+    = f.label :required_text, "Requires"
+    = f.text_area :required_text
+  .field
+    = f.label :recommended_text, "Recommended"
+    = f.text_area :recommended_text
   .field
     = f.label :quantity
     = f.text_field :quantity, type: :number

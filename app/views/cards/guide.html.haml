@@ -11,18 +11,88 @@
     - card = cards.first
     %p= markdown card.long_desc
     .row
-      %div
-        %h4 Strategy
-        %p= card.strategy
-      %div
-        %h4 Allies
-        %p
-      %div
-        %h4 Enemies
-        %p
-      %div
-        %h4 Requires
-        %p
+      - unless card.strategy.blank?
+        %div
+          %b Strategy:
+          %p
+            = markdown(card.strategy)
+
+
+      - unless card.allies.empty?
+        %div
+          %b Allies:
+          %p 
+            - card.allies.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+
+      - unless card.allies_of.empty?
+        %div
+          %b Ally of:
+          %p
+            - card.allies_of.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+
+
+      - unless card.enemies.empty?
+        %div
+          %b Enemies:
+          %p 
+            - card.enemies.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+
+      - unless card.enemies_of.empty?
+        %div
+          %b Enemy of:
+          %p
+            - card.enemies_of.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+
+
+      - unless card.requires.empty? and card.required_text.blank?
+        %div
+          %b Requires:
+          - unless card.required_text.blank?
+            %p 
+              = markdown card.required_text
+          - unless card.requires.empty?
+            %p
+              - card.requires.each do |c|
+                = render partial: "short", object: c
+                &nbsp;
+
+      - unless card.required_by.empty?
+        %div
+          %b Required by:
+          %p
+            - card.required_by.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+
+      - unless card.recommends.empty? and card.recommended_text.blank?
+        %div
+          %b Recommended:
+          - unless card.recommended_text.blank?
+            %p
+              = markdown card.recommended_text
+          - unless card.recommends.empty?
+            %p 
+              - card.recommends.each do |c|
+                = render partial: "short", object: c
+                &nbsp;
+
+      - unless card.recommended_by.empty?
+        %div
+          %b Recommended By:
+          %p
+            - card.recommended_by.each do |c|
+              = render partial: "short", object: c
+              &nbsp;
+    %br
+
 
 .no-print
   = link_to "Back", cards_path

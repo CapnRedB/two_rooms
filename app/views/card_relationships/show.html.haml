@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Card:
+  = @card_relationship.card_id
+%p
+  %b To:
+  = @card_relationship.to_id
+%p
+  %b Description:
+  = @card_relationship.description
+
+= link_to 'Edit', edit_card_relationship_path(@card_relationship)
+\|
+= link_to 'Back', card_relationships_path
