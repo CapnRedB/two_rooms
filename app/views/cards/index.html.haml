@@ -1,13 +1,11 @@
 %h1 Listing cards
 
-%table.cards.sortable{data: {action: "/cards/sort.json"}}
+%table.cards.grid.sortable{data: {action: "/cards/sort.json"}}
   %thead
     %tr
       %th{width: 200} Title
       %th{width: 200} Short desc
       %th{width: 400} Long desc
-      %th
-      %th
       %th
       
   %tbody
@@ -15,15 +13,27 @@
       %tr{data: {key: card.id}}
         %td
           = render partial: 'short', object: card
-          %div= card.subtitle
+          %div
+            = card.subtitle
+            - unless card.quantity == 1
+              = "(#{card.quantity}x)"
         %td= card.short_desc
         %td= card.long_desc
-        %td= link_to 'Show', card
-        %td= link_to 'Move', '#', class: :move
-        %td= link_to 'Edit', edit_card_path(card)
-        %td= link_to 'Flip', card_flip_path(card)
-        %td= link_to 'Destroy', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td
+          = link_to 'Show', card
+          = link_to 'Move', '#', class: :move
+          = link_to 'Edit', edit_card_path(card)
+          = link_to 'Flip', card_flip_path(card)
+          = link_to 'Destroy', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %tfoot
+    %tr
+      %th
+        = "#{pluralize(@cards.length, "total cards")}"
+        %br
+        = "#{pluralize(@cards.group_by(&:title).length, "unique titles")}"
+      %th.blue= "#{pluralize(@cards.select{|c| c.color == "Blue" }.length, "Blue Cards")}"
+      %th.red= "#{pluralize(@cards.select{|c| c.color == "Red" }.length, "Red Cards")}"
+      %th.grey= "#{pluralize(@cards.select{|c| c.color == "Grey" }.length, "Grey Cards")}"
 %br
 
 = link_to 'New Card', new_card_path

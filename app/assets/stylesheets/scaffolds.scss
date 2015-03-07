@@ -83,6 +83,19 @@ div {
   }
 }
 
+table.grid {
+  border-collapse: collapse;
+
+  td, th {
+    padding: 0.5em;
+    border: 1px solid black;
+  }
+
+  thead th {
+    background-color: #EEE;
+  }
+}
+
 @media print {
   .no-print {
     display: none;

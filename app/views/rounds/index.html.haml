@@ -1,15 +1,13 @@
 %h1 Listing rounds
 
-%table
+%table.grid
   %thead
     %tr
       %th Game type
       %th Number
       %th Duration
       %th 
-      %th
-      %th
-      %th
+      %th 
       
   %tbody
     - @rounds.each do |round|
@@ -19,7 +17,7 @@
         %td= round.duration
         %td
           - unless round.swaps.empty?
-            %table
+            %table.grid
               %thead
                 %tr
                   %th Players
@@ -30,10 +28,11 @@
                     %td= swap.range
                     %td= swap.count
 
-        %td= link_to 'Show', round
-        %td= link_to 'Swaps', round_swaps_path(round)
-        %td= link_to 'Edit', edit_round_path(round)
-        %td= link_to 'Destroy', round, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to 'Show', round
+          = link_to 'Swaps', round_swaps_path(round)
+          = link_to 'Edit', edit_round_path(round)
+          = link_to 'Destroy', round, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

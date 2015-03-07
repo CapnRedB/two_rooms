@@ -23,6 +23,7 @@ module Printable
     def initialize()
       super
       @card_number = 0
+      @current_color = "Blue"
     end
 
     def render(set)
@@ -38,20 +39,26 @@ module Printable
     end
 
     def render_card(card)
+      if card.color != @current_color
+        @card_number = (@card_number / 9.0).ceil * 9
+      end
+
       pos = (@card_number % 9)
       row = pos / 3
       col = @card_number % 3
 
       offset = Printable::Cards::CardOffsets[pos]
 
-      if @card_number != 0 and pos % 9 == 0
+      if @card_number != 0 and pos % 9 == 0  
         @pdf.start_new_page
       end
+
 
       @pdf.bounding_box(offset, Printable::Cards::CardSize) do
         card.render @pdf
       end
 
+      @current_color = card.color
       @card_number += 1
     end
 	end

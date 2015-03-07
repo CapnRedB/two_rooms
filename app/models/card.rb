@@ -5,7 +5,8 @@ class Card < ActiveRecord::Base
   FACTIONS = COLORS
 
   default_scope { order("sort_order asc") }
-  scope :alpha, -> { order("title asc, color asc")}
+  scope :alpha, -> { order("title asc, color asc") }
+  scope :color, -> { order("color asc, title asc") }
   
   has_many :relationships, :class_name => "CardRelationship", :foreign_key => "card_id"
   has_many :relations, :through => :relationships, :source => :to

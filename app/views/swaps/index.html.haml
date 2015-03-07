@@ -1,12 +1,10 @@
 %h1= "Listing swaps for #{@round}"
 
-%table
+%table.grid
   %thead
     %tr
       %th Players
       %th Count
-      %th
-      %th
       %th
       
   %tbody
@@ -14,9 +12,10 @@
       %tr
         %td= swap.range
         %td= swap.count
-        %td= link_to 'Show', round_swap_path(@round, swap)
-        %td= link_to 'Edit', edit_round_swap_path(@round, swap)
-        %td= link_to 'Destroy', round_swap_path(@round, swap), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to 'Show', round_swap_path(@round, swap)
+          = link_to 'Edit', edit_round_swap_path(@round, swap)
+          = link_to 'Destroy', round_swap_path(@round, swap), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

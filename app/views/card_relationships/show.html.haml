@@ -2,13 +2,13 @@
 
 %p
   %b Card:
-  = @card_relationship.card_id
-%p
-  %b To:
-  = @card_relationship.to_id
+  = render partial: "cards/short", object: @card_relationship.card
 %p
   %b Description:
   = @card_relationship.description
+%p
+  %b To:
+  = render partial: "cards/short", object: @card_relationship.to
 
 = link_to 'Edit', edit_card_relationship_path(@card_relationship)
 \|

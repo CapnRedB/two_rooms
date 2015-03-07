@@ -1,13 +1,11 @@
 %h1 Listing card_relationships
 
-%table
+%table.grid
   %thead
     %tr
       %th Card
       %th Type
       %th To
-      %th
-      %th
       %th
       
   %tbody
@@ -20,9 +18,10 @@
         %td
           - unless card_relationship.to.nil?
             = render partial: 'cards/short', object: card_relationship.to
-        %td= link_to 'Show', card_relationship
-        %td= link_to 'Edit', edit_card_relationship_path(card_relationship)
-        %td= link_to 'Destroy', card_relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to 'Show', card_relationship
+          = link_to 'Edit', edit_card_relationship_path(card_relationship)
+          = link_to 'Destroy', card_relationship, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
