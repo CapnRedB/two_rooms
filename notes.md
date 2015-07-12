@@ -64,18 +64,17 @@ A user wants to play a game. He clicks [Play Now] in the navigation and is shown
 
 
 ## Models
-
 Deck
-	user_id
-	name
-	description
-	bury
-	:tips
-	:filler
+	user_id:integer
+	name:string
+	description:text
+	bury:boolean
+
 
 DeckCard
-	deck_id
-	card_id
+	deck_id:integer
+	card_id:integer
+	affiliation:string
 
 Rule
 	name
