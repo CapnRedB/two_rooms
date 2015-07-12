@@ -15,15 +15,16 @@ class User < ActiveRecord::Base
     
     p auth
     if user.nil?
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-
-      email = auth.info.email if email_is_verified
+      email = auth.info.email
       user = User.where(email: email).first if email
+      name = auth.info.name
+      nickname = auth.info.nickname || auth.info.name
 
       if user.nil?
         user = User.new(
-          name: auth.extra.raw_info.name,
-          email: email,
+          name: name,
+          nickname: nickame,
+          email: email ? email : "oauth-#{nickname}@#{auth.provider}.com",
           password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation! if user.respond_to?(:skip_confirmation)
