@@ -10,7 +10,7 @@ Then visit (http://localhost:3000)
 
 ## TODO
 
-1. -Fix seed id problem-
+1. ~~Fix seed id problem~~
 2. Add print and play with graphics
 3. Add gameplay support
 
