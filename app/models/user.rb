@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
           email: email ? email : "#{PLACEHOLDER}-#{auth.id}-#{auth.provider}.com",
           password: Devise.friendly_token[0, 20]
         )
-        user.skip_confirmation!
+        user.skip_confirmation! if user.respond_to?(:skip_confirmation)
         user.save!
       end
     end
@@ -42,5 +42,5 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ PLACEHOLDER_REGEX
   end
-  
+
 end
