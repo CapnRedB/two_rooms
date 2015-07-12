@@ -58,3 +58,6 @@ group :development, :test do
   gem 'seed_dump'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
