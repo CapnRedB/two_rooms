@@ -35,8 +35,19 @@ div {
   }
 }
 
-#notice {
-  color: green;
+#flash {
+  margin-left: 2em;
+  padding: 1em;
+  font-size: large;
+  font-weight: bold;
+  
+  #notice {
+    color: green;
+  }
+  #alert {
+    border: 2px solid red;
+    background-color: #f0f0f0;
+  }
 }
 
 .field_with_errors {
