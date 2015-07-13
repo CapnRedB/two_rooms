@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
-  attr_accessable :nickname
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           name: name,
-          nickname: nickame,
+          #nickname: nickame,
           email: email ? email : "oauth-#{nickname}@#{auth.provider}.com",
           password: Devise.friendly_token[0, 20]
         )
