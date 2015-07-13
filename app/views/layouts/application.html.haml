@@ -9,8 +9,10 @@
     %link{ rel: "icon", type: "image/png", href: "/images/bomb.png"}
   %body
     #flash
-      %p#notice= notice
-      %p#alert= alert
+      - unless notice.nil?
+        %p#notice= notice
+      - unless alert.nil?
+        %p#alert= alert
 
 
     = yield

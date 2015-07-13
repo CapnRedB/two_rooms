@@ -6,13 +6,13 @@
         - current_user.errors.full_messages.each do |msg|
           = msg
     .form-group
-      = f.label :email
-      .controls
-        = f.text_field :email, autofocus: true, value: '', :class => 'form-control input-lg', placeholder: 'user@example.com'
-        %p.help-block Please confirm your email address. No spam.
       = f.label :nickname
       .controls
         = f.text_field :nickname, :autofocus => true, :value => "", :class => 'form-control input-lg', placeholder: 'Joe'
         %p.help-block Your nickname will be used while playing the game.
+      / = f.label :email
+      / .controls
+      /   = f.text_field :email, autofocus: true, value: '', :class => 'form-control input-lg', placeholder: 'user@example.com'
+      /   %p.help-block Please confirm your email address. No spam.
     .actions
       = f.submit 'Continue', class: 'btn btn-primary'
