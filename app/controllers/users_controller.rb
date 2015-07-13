@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    accessable = [ :name, :email ]
+    accessable = [ :name, :email, :nickname ]
     accessable << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessable)
   end
