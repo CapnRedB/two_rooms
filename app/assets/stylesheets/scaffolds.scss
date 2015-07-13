@@ -37,9 +37,12 @@ div {
 
 #flash {
   margin-left: 2em;
-  padding: 1em;
   font-size: large;
   font-weight: bold;
+
+  div {
+    padding: 1em;
+  }
   
   #notice {
     color: green;
