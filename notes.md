@@ -96,3 +96,8 @@ GameRule
 	game_id
 	rule_id
 	value
+
+GamePlayers
+	game_id
+	user_id
+	card_id

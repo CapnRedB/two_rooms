@@ -1,11 +1,10 @@
 %h1 Listing cards
 
-%table.cards.grid.sortable{data: {action: "/cards/sort.json"}}
+%table.cards.full.grid.sortable{data: {action: "/cards/sort.json"}}
   %thead
     %tr
-      %th{width: 200} Title
-      %th{width: 200} Short desc
-      %th{width: 400} Long desc
+      %th Title
+      %th Short desc
       %th
       
   %tbody
@@ -18,7 +17,6 @@
             - unless card.quantity == 1
               = "(#{card.quantity}x)"
         %td= card.short_desc
-        %td= card.long_desc
         %td
           = link_to 'Show', card
           = link_to 'Move', '#', class: :move
@@ -31,9 +29,11 @@
         = "#{pluralize(@cards.length, "total cards")}"
         %br
         = "#{pluralize(@cards.group_by(&:title).length, "unique titles")}"
-      %th.blue= "#{pluralize(@cards.select{|c| c.color == "Blue" }.length, "Blue Cards")}"
-      %th.red= "#{pluralize(@cards.select{|c| c.color == "Red" }.length, "Red Cards")}"
-      %th.grey= "#{pluralize(@cards.select{|c| c.color == "Grey" }.length, "Grey Cards")}"
+      %th
+        .blue= "#{pluralize(@cards.select{|c| c.color == "Blue" }.length, "Blue Cards")}"
+        .red= "#{pluralize(@cards.select{|c| c.color == "Red" }.length, "Red Cards")}"
+        .grey= "#{pluralize(@cards.select{|c| c.color == "Grey" }.length, "Grey Cards")}"
+      %th
 %br
 
 = link_to 'New Card', new_card_path

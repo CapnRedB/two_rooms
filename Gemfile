@@ -38,6 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'prawn'
 gem 'prawn-table'
 gem 'redcarpet'
+gem 'normalize-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'

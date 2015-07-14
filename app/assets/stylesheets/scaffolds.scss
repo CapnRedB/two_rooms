@@ -36,11 +36,10 @@ div {
 }
 
 #flash {
-  margin-left: 2em;
   font-size: large;
   font-weight: bold;
 
-  div {
+  p {
     padding: 1em;
   }
   
@@ -82,36 +81,3 @@ div {
   }
 }
 
-
-.field {
-
-  padding: 1em;
-
-  label {
-    display: block;
-  }
-
-  textarea {
-    height: 4em;
-    width: 30em;
-  }
-}
-
-table.grid {
-  border-collapse: collapse;
-
-  td, th {
-    padding: 0.5em;
-    border: 1px solid black;
-  }
-
-  thead th {
-    background-color: #EEE;
-  }
-}
-
-@media print {
-  .no-print {
-    display: none;
-  }
-}
