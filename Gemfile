@@ -46,6 +46,10 @@ gem 'omniauth-google'
 #gem 'omniauth-facebook'
 
 
+gem 'ember-rails'
+gem 'ember-source'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -13,4 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery
+//= require jquery_ujs
+//= require ember
+//= require ember-data
+//= require active-model-adapter
+//= require_self
+//= require ./two_rooms
+
+// for more details see: http://emberjs.com/guides/application/
+TwoRooms = Ember.Application.create();
+
 //= require_tree .

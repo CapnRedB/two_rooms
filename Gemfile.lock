@@ -20,6 +20,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active-model-adapter-source (1.13.3)
+      ember-data-source (>= 1.13, < 3.0)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -37,6 +41,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    barber (0.9.1)
+      ember-source (>= 1.0, < 2)
+      execjs (>= 1.2, < 3)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -55,6 +62,21 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    ember-data-source (1.13.5)
+      ember-source (>= 1.8, < 3.0)
+    ember-handlebars-template (0.2.2)
+      barber (>= 0.9.0)
+      sprockets (>= 2.1, < 3.3)
+      tilt
+    ember-rails (0.19.0)
+      active-model-adapter-source (>= 1.13.0)
+      active_model_serializers
+      ember-data-source (>= 1.13.0)
+      ember-handlebars-template (>= 0.1.1, < 1.0)
+      ember-source (>= 1.8.0)
+      jquery-rails (>= 1.0.17)
+      railties (>= 3.1)
+    ember-source (1.13.4.1)
     erubis (2.7.0)
     execjs (2.3.0)
     globalid (0.3.0)
@@ -205,6 +227,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   devise
+  ember-rails
+  ember-source
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
