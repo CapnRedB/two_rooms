@@ -1,0 +1,59 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>Sign Up</h1></header>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<small>Preferred: use an existing account</small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<button {{action 'oauth-twitter'}} class="btn btn-default">
+				<span class="fa fa-twitter fa-lg"></span>
+				Twitter
+			</button>
+		</div>
+		<div class="col-xs-12">
+			<button {{action 'oauth-google'}} class="btn btn-default">
+				<span class="fa fa-google fa-lg"></span>
+				Google
+			</button>
+		</div>
+		<div class="col-xs-12">
+			<button {{action 'oauth-facebook'}} class="btn btn-default">
+				<span class="fa fa-facebook fa-lg"></span>
+				Facebook
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<small>or: sign up here</small>
+		</div>
+	</div>
+	<form>		
+		<div class="form-group">
+			<label for="name">Name</label>
+			{{input value=name id="name" class="form-control"}}
+			<span class="help-block on-focus">Your name will be shown to other players</span>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email Address</label>
+			{{input value=email id="email" class="form-control"}}
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			{{input value=password id="password" type="password" class="form-control"}}
+		</div>
+
+		<button {{action 'create'}} class="btn btn-primary">
+			Create</button>
+		{{#link-to 'application'}}Back{{/link-to}}
+	</form>
+
+</div>		

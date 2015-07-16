@@ -17,13 +17,12 @@
 //= require ember-template-compiler
 //= require active-model-adapter
 //= require_self
-//= require controllers/controller
-//= require routes/route
 //= require ./two_rooms
 
 // for more details see: http://emberjs.com/guides/application/
 TwoRooms = Ember.Application.create({
 	//  LOG_ACTIVE_GENERATION: true
+	//rootElement: "#ember"
 });
 
 //= require_tree .
