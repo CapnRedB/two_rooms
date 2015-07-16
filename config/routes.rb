@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   end
   post 'cards/sort' => "cards#sort"
 
-  root 'cards#index'
+  #root 'cards#index'
+  root 'ember#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

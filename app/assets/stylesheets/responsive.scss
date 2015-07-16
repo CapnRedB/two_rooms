@@ -1,144 +1,92 @@
 
 
-/* phones */
+// /* phones */
 
-body {
+// body {
+// 	#wrapper {
+// 		margin: 0 auto;
 
-	#frame {
-		position: fixed;
-		height: 100%;
-		width: 100%;
-		background-repeat: repeat-x;
-		z-index: -1;
+// 		#frame {
+// 			position: fixed;
+// 			height: 100%;
+// 			width: 100%;
+// 			background-repeat: repeat-x;
+// 			z-index: -1;
 
-		//transition: background-position 2s ease-in-out;
-		transition: background-position 2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+// 			//transition: background-position 2s ease-in-out;
+// 			transition: background-position 2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
-		background-image: url(/images/lines-bg-grey.png);
+// 			background-image: url(/images/lines-bg-grey.png);
 
-  		&.red {
-			background-image: url(/images/lines-bg-grey.png);
-		}
-		&.blue {
-			background-image: url(/images/lines-bg-grey.png);
-		}
-		&.yellow {
-			background-image: url(/images/lines-bg-grey.png);
-		}
-		&.green {
-			background-image: url(/images/lines-bg-grey.png);
-		}
+// 	  		&.red {
+// 				background-image: url(/images/lines-bg-grey.png);
+// 			}
+// 			&.blue {
+// 				background-image: url(/images/lines-bg-grey.png);
+// 			}
+// 			&.yellow {
+// 				background-image: url(/images/lines-bg-grey.png);
+// 			}
+// 			&.green {
+// 				background-image: url(/images/lines-bg-grey.png);
+// 			}
 
-		&.above {
-			background-position: right 820px top -700px;
-		}
-		&.amid {
-			background-position: right 0 top 120px;
-		}
-		&.beneath {
-			background-position: right -1300px bottom -680px;
-		}
-	}
+// 			&.above {
+// 				background-position: right 820px top -700px;
+// 			}
+// 			&.amid {
+// 				background-position: right 0 top 120px;
+// 			}
+// 			&.beneath {
+// 				background-position: right -1300px bottom -680px;
+// 			}
+// 		}
 
-	#container {
-		margin: 0 auto;
-		padding: 0 1em;
-	}
+// 		#container {
+// 			margin: 0 1em;
+// 			padding: 0;
+// 			width: 360px;
+// 		}
+// 	}
 
-	#navigation {
-		.menu ul {
-			margin: 0;
-		}
-	}
-	// #navigation {
-	// 	position: fixed;
-	// 	top: 0;
-	// 	right: 0;
-	// 	width: 100%;
-	// 	height: 14px;
-	// 	display: block;
 	
-	// 	background-image: url(/images/top.png);
-
-	// 	.icon {
-	// 		position: absolute;
-	// 		right: 0;
-	// 		height: 64px;
-	// 		width: 83px;
-
-	// 		background-image: url(/images/menu.png);
-	// 		background-position: 0 0;
-
-	// 		cursor: pointer;
-	// 	}
-
-	// 	.menu {
-	// 		display: none;
-
-	// 		ul {
-	// 			list-style-type: none;
-	// 			li {
-	// 				display: inline-block;
-	// 				padding: 0.5em 1em;
-	// 			}
-	// 		}
-	// 	}
-
-	// 	&.open {
-	// 		background-color: black;
-	// 		background-position: bottom;
-	// 		margin-top: 30px;
-	// 		.menu {
-	// 			display: block;
-	// 			background-color: black;
-	// 			margin-top: -44px;
-
-	// 			a {
-	// 				color: white;
-	// 				font-weight: bold;
-	// 				font-size: large;
-
-	// 				&:hover{
-	// 					background-color: white;
-	// 					color: black;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
-	// }
-		
-}	
+// 	.large {
+// 		font-size: larger;
+// 	}	
+// 	.extra-large {
+// 		font-size: x-large;
+// 	}	
+// }	
 
 
-/* tablets */
-@media (min-width: 768px ) {
+// /* tablets */
+// @media (min-width: 768px ) {
 
-	body #container {
-		width: 700px;
-	}
+// 	body #container {
+// 		width: 700px;
+// 	}
 
-	#navigation .icon { 
-		display: none; 
-	}
-	#navigation .menu {
-		display: block;
-	}
-}
+// 	#navigation .icon { 
+// 		display: none; 
+// 	}
+// 	#navigation .menu {
+// 		display: block;
+// 	}
+// }
 
-/* laptops */
-@media (min-width: 992px ) {
+// /* laptops */
+// @media (min-width: 992px ) {
 
-	body #container {
-		width: 800px;
-	}
+// 	body #container {
+// 		width: 800px;
+// 	}
 
-}
+// }
 
-/* large screens */
-@media (min-width: 1200px ) {
+// /* large screens */
+// @media (min-width: 1200px ) {
 
-	body #container {
-		width: 1000px;		
-	}
-}
+// 	body #container {
+// 		width: 1000px;		
+// 	}
+// }
