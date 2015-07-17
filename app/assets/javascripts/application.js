@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery-ui
-//= require_tree .
+//= require cards.js
+//= require menu.js
+//= require two_rooms.js

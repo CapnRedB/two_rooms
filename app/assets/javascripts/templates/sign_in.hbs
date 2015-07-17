@@ -6,7 +6,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<button {{action 'oauth-twitter'}} class="btn btn-default">
+			<button {{action 'oauth-twitter'}} class="btn btn-default"> 
 				<span class="fa fa-twitter fa-lg"></span>
 				Twitter
 			</button>
@@ -25,18 +25,18 @@
 		</div>
 	</div>
 
-	<form>		
+	<form method="post" action="/users/sign_in">
 		<div class="form-group">
 			<label for="email">Email Address</label>
-			{{input value=email id="email" class="form-control"}}
+			{{input value=email id="email" class="form-control" placeholder="user@example.com"}}
 		</div>
 
 		<div class="form-group">
 			<label for="password">Password</label>
-			{{input value=password id="password" type="password" class="form-control"}}
+			{{input value=password id="password" type="password" class="form-control" placeholder="Password"}}
 		</div>
 
-		<button {{action 'login'}} class="btn btn-primary">Login</button>
+		<button {{action "submit"}} class="btn btn-primary">Login</button>
 		{{#link-to 'application'}}Back{{/link-to}}
 	</form>
 

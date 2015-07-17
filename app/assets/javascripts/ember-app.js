@@ -25,4 +25,12 @@ TwoRooms = Ember.Application.create({
 	//rootElement: "#ember"
 });
 
+
+// $(document).ajaxSend(function(e, xhr, options) {
+// 	if (options.data == null) {
+// 		options.data = {};
+// 	}
+// 	options.data['authenticity_token'] = $('meta[name=csrf-token]').attr('content');
+// });
+
 //= require_tree .

@@ -1,0 +1,18 @@
+%p
+  Email
+  .email
+    %strong= @user.email
+%p
+  Name
+  .name
+    %strong= @user.name
+%p
+  Signed in at
+  .last_sign_in
+    %strong= @user.last_sign_in_at
+%p
+  Sign in count
+  .count
+    %strong= @user.sign_in_count
+
+= link_to

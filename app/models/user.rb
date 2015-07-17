@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  validates_uniqueness_of :email
+  before_save :ensure_authentication_token
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 
@@ -23,8 +26,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           name: name,
-          #nickname: nickame,
-          email: email ? email : "oauth-#{nickname}@#{auth.provider}.com",
+          email: email ? email : "oauth-#{name}@#{auth.provider}.com",
           password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation! if user.respond_to?(:skip_confirmation)
@@ -39,8 +41,18 @@ class User < ActiveRecord::Base
     user
   end
 
-  # def email_verified?
-  #   self.email && self.email !~ PLACEHOLDER_REGEX
-  # end
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
 
+  private
+
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(authentication_token: token).first
+      end
+    end
 end

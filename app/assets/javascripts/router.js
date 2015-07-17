@@ -6,4 +6,5 @@ TwoRooms.Router.map(function() {
   this.route('sign_up');
   this.route('sign_in');
 
+  this.resource('decks');
 });
