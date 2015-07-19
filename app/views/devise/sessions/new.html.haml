@@ -1,0 +1,20 @@
+.container-fluid
+  .row
+    .col-md-12.text-center
+      %header
+        %h1 Sign In
+  = render partial: 'devise/shared/oauth', locals: {providers: [:twitter, :google, :facebook]} 
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group
+      = f.label :email, "Email Address"
+      = f.text_field :email, class: "form-control"
+
+    .form-group
+      = f.label :password
+      = f.text_field :password, class: "form-control"
+
+    = f.submit "Create", class: "btn btn-primary"
+    = link_to "Back", root_path
+
+  = render "devise/shared/links"

@@ -1,0 +1,40 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>Decks</h1></header>
+		</div>
+	</div>
+	<div class="row actions">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each model.decks as |deck|}}
+						<tr>
+							<td>
+								{{deck.name}}
+								<small>by {{deck.user_name}}</small>
+							</td>
+							<td>
+								{{#link-to "edit_deck"}}Edit{{/link-to}}
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Count: {{decks.length}}</th>
+						<th>
+							{{#link-to "new_deck"}}New{{/link-to}}
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

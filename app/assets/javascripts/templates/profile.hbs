@@ -1,0 +1,21 @@
+<div class="container-fluid offset">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>{{name}}</h1></header>
+		</div>
+	</div>
+	<div class="row actions text-center">
+		<div class="col-md-4">
+			{{#link-to 'new_game' class='btn btn-default'}}New Game{{/link-to}}
+		</div>
+		<div class="col-md-4">
+			{{#link-to 'join' class='btn btn-default'}}Join Game{{/link-to}}
+		</div>
+		<div class="col-md-4">
+			{{#link-to 'decks' class='btn btn-default'}}Decks{{/link-to}}
+		</div>
+		<div class="col-md-4">
+			<button {{action 'sign_out' }} class='btn btn-danger btn-small'>Sign Out</button>
+		</div>
+	</div>
+</div>

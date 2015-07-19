@@ -17,13 +17,3 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
-
-<%- if devise_mapping.omniauthable? %>
-  <div class="oauth-login">
-    <strong>Log in using any of the following services:</strong>
-	<%- resource_class.omniauth_providers.each do |provider| %>
-	  <%= link_to omniauth_authorize_path(resource_name, provider) do %>
-		<div class="<%= provider %>"> <span class="icon"></span> Sign in with <%= provider.to_s.titleize %></div>
-	  <% end -%>
-  <% end -%>
-<% end -%>

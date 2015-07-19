@@ -1,0 +1,30 @@
+%h1 Listing decks
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Bury
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @decks.each do |deck|
+      %tr
+        %td
+          = deck.name
+          - unless deck.user.nil?
+            %small= "by #{deck.user.name}"
+        %td= truncate(deck.description, length: 120)
+        %td
+          - if deck.bury
+            %span.fa.fa-check
+        %td= link_to 'Show', deck
+        %td= link_to 'Edit', edit_deck_path(deck)
+        %td= link_to 'Destroy', deck, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Deck', new_deck_path

@@ -1,4 +1,15 @@
 TwoRooms.SignInController = Ember.Controller.extend({
+	onSuccess: function(response) {
+		localStorage['token'] = response.token;
+		localStorage['name'] =response.name;
+		localStorage['email'] = response.email;
+
+		this.transitionToRoute('profile');
+	},
+	onFail: function(response) {
+		console.error(response);
+	},
+
 	needs: ["application"],
 
 	email: "",
@@ -12,15 +23,7 @@ TwoRooms.SignInController = Ember.Controller.extend({
 					password: this.get("password")
 				}
 			}
-			console.log(data);
-			$.post("/users/sign_in.json", data).then(function(response){
-				if ( response.token )
-				{
-					TwoRooms.Session.currentProp('token', response.token);
-					TwoRooms.Session.currentProp('name', response.name);
-					TwoRooms.Session.currentProp('email', response.email);
-				}
-			});
+			$.post("/users/sign_in.json", data).then(this.onSuccess.bind(this), this.onFail.bind(this));
 		}
 	}
 });

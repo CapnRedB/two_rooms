@@ -1,0 +1,17 @@
+%p
+  Name
+  .name
+    %strong= @deck.name
+    - unless @deck.user.nil?
+      %small= "by #{@deck.user.name}"
+%p
+  Description
+  .description
+    = @deck.description
+- if @deck.bury
+  %p
+    %strong This deck requires burying a card
+
+= link_to 'Edit', edit_deck_path(@deck)
+\|
+= link_to 'Back', decks_path

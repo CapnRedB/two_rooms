@@ -1,0 +1,20 @@
+= form_for @deck do |f|
+  - if @deck.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@deck.errors.count, "error")} prohibited this deck from being saved:"
+      %ul
+        - @deck.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
+    = f.label :description, class: 'sr-only'
+    = f.text_area :description, class: "form-control"
+  .checkbox
+    = f.label :bury do
+      = f.check_box :bury
+      Bury a card?
+  = f.submit 'Save', class: 'btn btn-primary'
+  = link_to 'Back', decks_path
+

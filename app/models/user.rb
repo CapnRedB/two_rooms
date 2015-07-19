@@ -11,17 +11,17 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   before_save :ensure_authentication_token
 
+  has_many :decks
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 
     user = signed_in_resource ? signed_in_resource : identity.user
     
-    p auth
     if user.nil?
       email = auth.info.email
       user = User.where(email: email).first if email
       name = auth.info.name
-      nickname = auth.info.nickname || auth.info.name
 
       if user.nil?
         user = User.new(
@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
+  end
+
+  def is_admin?
+    false
   end
 
   private
