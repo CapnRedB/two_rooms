@@ -1,4 +1,4 @@
-TwoRooms.NewDeckController = Ember.ObjectController.extend({
+TwoRooms.DecksNewController = Ember.ObjectController.extend({
 	name: "",
 	description: "",
 	bury: false,
@@ -13,7 +13,7 @@ TwoRooms.NewDeckController = Ember.ObjectController.extend({
 
 			var self = this;
 			deck.save().then(function(deck){
-				self.transitionToRoute('edit_deck', deck);
+				self.transitionToRoute('deck.edit', deck);
 			},function(deck){
 				console.log("failed to save");
 				console.log(deck);

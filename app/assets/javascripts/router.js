@@ -14,9 +14,7 @@ TwoRooms.Router.map(function() {
   });
   this.route('deck', {path: '/deck/:deck_id'}, function(){
     this.route('new');
-    this.route('edit', {path: '/:deck_card_id'}, function(){
-      this.route('cards');
-    });
+    this.route('edit', {path: '/:deck_card_id'});
   });
   // this.route('add_deck_card', {path: '/add_deck_card/:deck_id'});
   // this.route('deck_card', {path: '/edit_deck_card/:deck_card_id'}, function(){
@@ -24,6 +22,6 @@ TwoRooms.Router.map(function() {
   // });
 
 
-  // this.route('cards');
-  // this.route('card', {path: '/card/:card_id'});
+  this.route('cards');
+  this.route('card', {path: '/card/:card_id'});
 });

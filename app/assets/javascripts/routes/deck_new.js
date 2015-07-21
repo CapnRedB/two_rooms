@@ -1,4 +1,7 @@
-TwoRooms.DeckEditRoute = Ember.Route.extend({
+TwoRooms.DeckNewRoute = Ember.Route.extend({
+	// model: function(params) {
+	// 	return this.store.createRecord("deck_card", {deck: params["deck_id"]});
+	// },
 	setupController: function(controller, model) {
 		controller.set('cards', this.store.findAll('card'));
 		controller.set('model', model);

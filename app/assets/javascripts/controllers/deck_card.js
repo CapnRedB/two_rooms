@@ -1,4 +1,4 @@
-TwoRooms.DeckEditController = Ember.Controller.extend({
+TwoRooms.DeckCardController = Ember.Controller.extend({
 	card: null,
 	affiliation: null,
 	error: null,
