@@ -4,11 +4,12 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    @cards = Card.unscoped.alpha.all
 
     respond_to do |format|
       format.html
       format.pdf { send_data Card.render, type: "application/pdf", disposition: "inline" }
+      format.json { render json: @cards }
     end
   end
 
@@ -24,6 +25,18 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    cards = [@card]
+    @card.relationships.each do |r|
+      cards << r.to
+    end
+    @card.inverse_relationships.each do |ir|
+      cards << ir.to
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: cards }
+    end
   end
 
   # GET /cards/new

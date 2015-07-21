@@ -86,7 +86,7 @@ class Card < ActiveRecord::Base
     when "Red"
       "images/bomb.png"
     else
-      nil
+      "images/grey.png"
     end
   end
 
@@ -97,9 +97,10 @@ class Card < ActiveRecord::Base
     when "Red"
       "images/print-bomb.png"
     else
-      ""
+      "images/print-grey.png"
     end
   end
+  def large_icon; print_icon; end
 
   def flip
     map = { 

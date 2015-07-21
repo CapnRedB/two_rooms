@@ -15,22 +15,22 @@
 				</thead>
 				<tbody>
 					{{#each model.decks as |deck|}}
-						<tr>
+						{{#link-to "deck" deck tagName="tr"}}
 							<td>
 								{{deck.name}}
 								<small>by {{deck.user_name}}</small>
 							</td>
 							<td>
-								{{#link-to "edit_deck"}}Edit{{/link-to}}
+								{{#link-to "deck" deck}}Edit{{/link-to}}
 							</td>
-						</tr>
+						{{/link-to}}
 					{{/each}}
 				</tbody>
 				<tfoot>
 					<tr>
 						<th>Count: {{decks.length}}</th>
 						<th>
-							{{#link-to "new_deck"}}New{{/link-to}}
+							{{#link-to "decks.new"}}New{{/link-to}}
 						</th>
 					</tr>
 				</tfoot>

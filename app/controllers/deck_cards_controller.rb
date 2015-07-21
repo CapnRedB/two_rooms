@@ -1,28 +1,20 @@
-class DecksController < ApplicationController
-  before_action :set_deck, only: [:show, :edit, :update, :destroy]
+class DeckCardsController < ApplicationController
+  before_action :set_deck, only: [:new, :create]
+  before_action :set_deck_card, only: [:show, :edit, :update, :destroy]
 
-  # GET /decks
-  # GET /decks.json
-  def index
-    @decks = Deck.all
-    respond_to do |format|
-      format.html 
-      format.json { render json: @decks }
-    end
-  end
 
-  # GET /decks/1
-  # GET /decks/1.json
+  # GET /deck_cards/1
+  # GET /deck_cards/1.json
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @deck }
+      format.json { render json: @deck_card, serializer: DeckCardDetailSerializer }
     end
   end
 
   # GET /decks/new
   def new
-    @deck = Deck.new
+    @deck_card = @deck.deck_cards.new
   end
 
   # GET /decks/1/edit
@@ -32,7 +24,7 @@ class DecksController < ApplicationController
   # POST /decks
   # POST /decks.json
   def create
-    @deck = current_user.decks.new(deck_params)
+    @deck = @deck.deck_cards.new(deck_params)
     # @deck = Deck.new(deck_params)
 
     respond_to do |format|
@@ -50,9 +42,9 @@ class DecksController < ApplicationController
   # PATCH/PUT /decks/1
   # PATCH/PUT /decks/1.json
   def update
-    if @deck.user == current_user or current_user.is_admin?
+    if @deck_card.deck.user == current_user or current_user.is_admin?
       respond_to do |format|
-        if @deck.update(deck_params)
+        if @deck_card.update(deck_card_params)
           format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
           format.json { render json: @deck, status: :ok}
         else
@@ -71,21 +63,29 @@ class DecksController < ApplicationController
   # DELETE /decks/1
   # DELETE /decks/1.json
   def destroy
-    @deck.destroy
+    @deck_card.destroy
     respond_to do |format|
       format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+
+
   private
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_deck_card
+      @deck_card = DeckCard.find(params[:id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
-      @deck = Deck.find(params[:id])
+      @deck = Deck.find(params[:deck_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def deck_params
-      params.require(:deck).permit(:user_id, :name, :description, :bury)
+    def deck_card_params
+      params.require(:deck_card).permit(:deck_id, :card_id, :affiliation)
     end
+
 end

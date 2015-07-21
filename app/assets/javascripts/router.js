@@ -9,7 +9,21 @@ TwoRooms.Router.map(function() {
   this.route('profile');
 
   // this.resource('decks');
-  this.route('decks');
-  this.route('new_deck');
-  this.route('edit_deck', {path: '/edit_deck/:deck_id'});
+  this.route('decks', function(){
+    this.route('new');    
+  });
+  this.route('deck', {path: '/deck/:deck_id'}, function(){
+    this.route('new');
+    this.route('edit', {path: '/:deck_card_id'}, function(){
+      this.route('cards');
+    });
+  });
+  // this.route('add_deck_card', {path: '/add_deck_card/:deck_id'});
+  // this.route('deck_card', {path: '/edit_deck_card/:deck_card_id'}, function(){
+  //   this.route('cards');
+  // });
+
+
+  // this.route('cards');
+  // this.route('card', {path: '/card/:card_id'});
 });

@@ -3,4 +3,5 @@ TwoRooms.Deck = DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
   bury: DS.attr('boolean'),
+  deck_cards: DS.hasMany('deck_cards')
 });

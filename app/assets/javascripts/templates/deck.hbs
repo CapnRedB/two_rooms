@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <header>
+          <h1>{{model.name}} <small>by {{model.user_name}}</small></h1>
+      </header>
+    </div>
+  </div>
+  <form method="post" action="/decks">
+    <div class="form-group">
+      <label for="name">Name</label>
+      {{input value=name id="name" class="form-control" placeholder="Name of your deck"}}
+      <label for="description" class='sr-only'>Description</label>
+      {{textarea value=description id="description" type="description" class="form-control" placeholder="Optional Description" }}
+    </div>
+
+    <div class="checkbox">
+      <label for="bury">{{input type="checkbox" name="bury" id="bury" checked=bury}} Bury a card?</label>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Card</th>
+          <th>Affiliation</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.deck_cards as |deck_card|}}
+          {{#link-to 'deck.edit' deck_card tagName='tr'}}
+            <td> {{short-card card=deck_card.card}} </td>
+            <td>{{deck_card.affiliation}}</td>
+            <td><button {{action "remove" deck_card}} class="btn btn-danger btn-xs">Remove</button></td>
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>{{#link-to "deck.new" model}}Add Card{{/link-to}}</td>
+        </tr>
+      </tfoot>
+    </table>
+    {{outlet}}
+
+    <button {{action "submit"}} class="btn btn-primary">Create Deck</button>
+    {{#link-to 'decks'}}Back{{/link-to}}
+  </form>
+</div>
+
+

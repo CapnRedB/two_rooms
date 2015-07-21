@@ -1,0 +1,70 @@
+<div class="container-fluid offset {{model.color}}" id="card">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header>
+				<img src="/{{model.large_icon}}" alt="{{model.team}}" />
+				<div>
+					<h1>{{model.title}}</h1>
+					<p>{{model.subtitle}}</p>
+				</div>
+			</header>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>{{markdown model.team}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p>{{markdown model.short_desc}}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button {{action "toggleDetail"}} class="btn btn-default btn-xs">{{detailLinkText}}</button>
+		</div>		
+	</div>
+	{{#if showDetail}}
+		{{#if model.long_desc}}
+			<div class="row">
+				<div class="col-md-2">
+					<strong>Details</strong>
+				</div>
+				<div class="col-md-10">
+					{{markdown model.long_desc}}
+				</div>
+			</div>
+		{{/if}}
+		{{#if model.strategy}}
+			<div class="row">
+				<div class="col-md-2">
+					<strong>Strategy</strong>
+				</div>
+				<div class="col-md-10">
+					{{markdown model.strategy}}
+				</div>
+			</div>
+		{{/if}}
+		{{#if model.recommended_text}}
+			<div class="row">
+				<div class="col-md-2">
+					<strong>Recommended</strong>
+				</div>
+				<div class="col-md-10">
+					{{markdown model.recommended_text}}
+				</div>
+			</div>
+		{{/if}}
+		{{#if model.required_text}}
+			<div class="row">
+				<div class="col-md-2">
+					<strong>Requires</strong>
+				</div>
+				<div class="col-md-10">
+					{{markdown model.required_text}}
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+</div>
