@@ -1,0 +1,1 @@
+TwoRooms.DecksNewRoute = TwoRooms.AuthenticatedRoute.extend({});

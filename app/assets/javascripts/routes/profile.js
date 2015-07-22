@@ -1,9 +1,6 @@
-TwoRooms.ProfileRoute = Ember.Route.extend({
-	setupController: function(controller, model){
-		if (localStorage['token'] == undefined )
-		{
-			return controller.transitionToRoute('sign_in');
-		}
-		controller.set("name", localStorage['name']);
-	},
+TwoRooms.ProfileRoute = TwoRooms.AuthenticatedRoute.extend({
+	setupController: function(controller, model) {
+		controller.set('name', localStorage['name']);
+		controller.set('model', model);
+	}
 });

@@ -5,6 +5,8 @@ TwoRooms.ProfileController = Ember.Controller.extend({
 			//redirect to rails sign out
 			localStorage.clear();
 			$.ajax("/users/sign_out", { method: "DELETE" });
+			
+			TwoRooms.NotificationsManager.push("Logged out.", 'info');
 			this.transitionToRoute("/");
 		}
 	}

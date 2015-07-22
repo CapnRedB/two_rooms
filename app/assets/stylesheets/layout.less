@@ -13,3 +13,41 @@
 		}
 	}
 }
+
+
+#frame {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat-x;
+	z-index: -1;
+
+	//transition: background-position 2s ease-in-out;
+	transition: background-position 2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+	background-image: url(/images/lines-bg-grey.png);
+
+	// &.red {
+	// 	background-image: url(/images/lines-bg-grey.png);
+	// }
+	// &.blue {
+	// 	background-image: url(/images/lines-bg-grey.png);
+	// }
+	// &.yellow {
+	// 	background-image: url(/images/lines-bg-grey.png);
+	// }
+	// &.green {
+	// 	background-image: url(/images/lines-bg-grey.png);
+	// }
+
+	&.above {
+		background-position: right 820px top -700px;
+	}
+	&.amid {
+		background-position: right 0 top 120px;
+	}
+	&.beneath {
+		background-position: right -1300px bottom -680px;
+	}
+}
+

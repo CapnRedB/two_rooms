@@ -21,29 +21,13 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Card</th>
-          <th>Affiliation</th>
+          <th width="50%">Card</th>
+          <th width="10%">Affiliation</th>
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        {{#each model.deck_cards as |deck_card|}}
-          {{#link-to 'deck.edit' deck_card tagName='tr'}}
-            <td> {{short-card card=deck_card.card}} </td>
-            <td>{{deck_card.affiliation}}</td>
-            <td><button {{action "remove" deck_card}} class="btn btn-danger btn-xs">Remove</button></td>
-          {{/link-to}}
-        {{/each}}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>{{#link-to "deck.new"}}Add Card{{/link-to}}</td>
-        </tr>
-      </tfoot>
+      {{outlet}}
     </table>
-    {{outlet}}
 
     <button {{action "submit"}} class="btn btn-primary">Create Deck</button>
     {{#link-to 'decks'}}Back{{/link-to}}

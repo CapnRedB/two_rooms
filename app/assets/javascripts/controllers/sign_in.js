@@ -3,14 +3,25 @@ TwoRooms.SignInController = Ember.Controller.extend({
 		localStorage['token'] = response.token;
 		localStorage['name'] =response.name;
 		localStorage['email'] = response.email;
+		localStorage['user_id'] =response.user_id;
 
-		this.transitionToRoute('profile');
+		if ( localStorage['afterAuth'] ) {
+			this.transitionToRoute(localStorage['afterAuth']);
+		}
+		else {
+			this.transitionToRoute('profile');			
+		}
+		localStorage.removeItem('afterAuth');
+
+		TwoRooms.NotificationsManager.push("Logged in.", 'success');
 	},
 	onFail: function(response) {
-		console.error(response);
+		console.log(response.responseJSON.error);
+		TwoRooms.NotificationsManager.push(response.responseJSON.error, 'danger');
+		return false;
 	},
 
-	needs: ["application"],
+	// needs: ["application"],
 
 	email: "",
 	password: "",

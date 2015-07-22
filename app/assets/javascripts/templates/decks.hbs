@@ -21,14 +21,14 @@
 								<small>by {{deck.user_name}}</small>
 							</td>
 							<td>
-								{{#link-to "deck" deck}}Edit{{/link-to}}
+								{{#link-to "deck.edit" deck}}Edit{{/link-to}}
 							</td>
 						{{/link-to}}
 					{{/each}}
 				</tbody>
 				<tfoot>
 					<tr>
-						<th>Count: {{decks.length}}</th>
+						<th></th>
 						<th>
 							{{#link-to "decks.new"}}New{{/link-to}}
 						</th>

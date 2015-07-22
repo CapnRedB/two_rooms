@@ -19,19 +19,9 @@
 //= require markdown
 //= require_self
 //= require ./two_rooms
+//= require routes/authenticated
+//= require_tree .
 
 // for more details see: http://emberjs.com/guides/application/
-TwoRooms = Ember.Application.create({
-	//  LOG_ACTIVE_GENERATION: true
-	//rootElement: "#ember"
-});
+TwoRooms = Ember.Application.create({});
 
-
-// $(document).ajaxSend(function(e, xhr, options) {
-// 	if (options.data == null) {
-// 		options.data = {};
-// 	}
-// 	options.data['authenticity_token'] = $('meta[name=csrf-token]').attr('content');
-// });
-
-//= require_tree .

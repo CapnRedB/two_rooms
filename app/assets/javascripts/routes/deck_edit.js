@@ -1,4 +1,4 @@
-TwoRooms.DeckEditRoute = Ember.Route.extend({
+TwoRooms.DeckEditRoute = TwoRooms.AuthenticatedRoute.extend({
 	setupController: function(controller, model) {
 		controller.set('cards', this.store.findAll('card'));
 		controller.set('model', model);
@@ -8,9 +8,10 @@ TwoRooms.DeckEditRoute = Ember.Route.extend({
 			var model = this.get('controller').get('content');
 			var self = this;
 			model.save().then(function(){
+				TwoRooms.NotificationsManager.push('Card Saved.', 'success');
 				self.transitionTo('deck');
 			}, function(){
-				this.get('controller').set('error', 'Unable to save.');
+				TwoRooms.NotificationsManager.push('Unable to save.', 'danger');
 			})
 		},
 		cancel: function(){

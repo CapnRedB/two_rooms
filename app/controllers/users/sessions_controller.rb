@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
       user.ensure_authentication_token
       user.save
       if json_request?
-        render json: { token: user.authentication_token, email: user.email, name: user.name }, status: :created and return
+        render json: { token: user.authentication_token, email: user.email, name: user.name, user_id: user.id }, status: :created and return
       end
     end
   end
