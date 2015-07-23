@@ -15,5 +15,4 @@
 //= require twitter/bootstrap
 //= require jquery-ui
 //= require cards.js
-//= require menu.js
 //= require two_rooms.js

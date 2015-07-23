@@ -1,4 +1,4 @@
-TwoRooms.DeckIndexRoute = Ember.Route.extend({
+TwoRooms.DeckRoute = Ember.Route.extend({
 
 	setupController: function(controller, model) {
 		controller.set('model', model);

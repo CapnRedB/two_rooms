@@ -1,0 +1,50 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>Decks</h1></header>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each model.decks as |deck|}}
+						<tr>
+							<td>
+								{{deck.name}}
+								<small>by {{deck.user_name}}</small>
+							</td>
+							{{#if deck.is_owned}}
+								<td colspan="2">
+									{{#link-to "deck.index" deck}}Show{{/link-to}}
+								</td>
+							{{else}}
+								<td>
+									{{#link-to "deck.index" deck}}Edit{{/link-to}}
+								</td>
+								<td>
+									{{confirm-button action="deleteDeck" label="Delete" param=deck.id}}
+								</td>
+							{{/if}}
+						</tr>
+					{{/each}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th></th>
+						<th>
+							{{#link-to "decks.new"}}New{{/link-to}}
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

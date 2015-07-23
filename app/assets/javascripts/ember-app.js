@@ -23,5 +23,6 @@
 //= require_tree .
 
 // for more details see: http://emberjs.com/guides/application/
-TwoRooms = Ember.Application.create({});
+TwoRooms = Ember.Application.create({
+});
 

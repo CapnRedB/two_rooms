@@ -4,7 +4,7 @@ TwoRooms.DecksNewController = Ember.ObjectController.extend({
 	bury: false,
 
 	actions: {
-		submit: function(){
+		create: function(){
 			var deck = this.store.createRecord('deck', {
 				name: this.get("name"),
 				description: this.get("description"),
@@ -13,10 +13,26 @@ TwoRooms.DecksNewController = Ember.ObjectController.extend({
 
 			var self = this;
 			deck.save().then(function(deck){
-				self.transitionToRoute('deck.edit', deck);
-			},function(deck){
-				console.log("failed to save");
-				console.log(deck);
+				TwoRooms.NotificationsManager.push("Created Deck " + self.get("name"));
+				self.transitionToRoute('deck.index', deck);
+
+			},function(response){				
+				self.set("errors", message);
+				var message = "Unable to create deck. ";
+				console.log(response);
+				if (response.errors )
+				{
+					for(var i in response.errors )
+					{
+						var detail = response.errors[i].detail;
+						if ( detail )
+						{
+							message += detail + " ";
+						}
+					}
+				}
+				TwoRooms.NotificationsManager.push(message, "danger");
+
 			});
 		}
 	}

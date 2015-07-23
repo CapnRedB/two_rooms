@@ -4,5 +4,10 @@ TwoRooms.Deck = DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
   bury: DS.attr('boolean'),
-  deck_cards: DS.hasMany('deck_cards')
+  deck_cards: DS.hasMany('deck_cards', {async: true}),
+
+  is_owned: function() {
+  	return this.get('user_id') == localStorage['user_id'];
+  }.property('user_id'),
+
 });

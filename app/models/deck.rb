@@ -3,6 +3,8 @@ class Deck < ActiveRecord::Base
   has_many :deck_cards
   after_create :add_default_cards!
 
+  validates :name, uniqueness: { scope: :user_id, message: "Duplicate deck name." }
+
   def user_name
     unless user.nil?
       user.name

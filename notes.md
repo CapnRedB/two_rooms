@@ -61,16 +61,16 @@ A user wants to play a game. He clicks [Play Now] in the navigation and is shown
 	/join
 	/sign_up
 	/sign_in
-a	/profile
+A	/profile
 
 a	/games
 a	/games/new
 a	/game/:game_id
 
 	/decks
-a	/decks/new
+A	/decks/new
 (o)	/deck/:deck_id
-ao	/deck/:deck_id/new
+Ao	/deck/:deck_id/new
 ao	/deck/:deck_id/:deck_card_id
 
 	/cards

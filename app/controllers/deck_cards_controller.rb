@@ -1,5 +1,5 @@
 class DeckCardsController < ApplicationController
-  before_action :set_deck, only: [:new, :create]
+  #before_action :set_deck, only: [:new, :create]
   before_action :set_deck_card, only: [:show, :edit, :update, :destroy]
 
 
@@ -14,7 +14,8 @@ class DeckCardsController < ApplicationController
 
   # GET /decks/new
   def new
-    @deck_card = @deck.deck_cards.new
+    #@deck_card = @deck.deck_cards.new
+    @deck_card = DeckCard.new
   end
 
   # GET /decks/1/edit
@@ -24,8 +25,8 @@ class DeckCardsController < ApplicationController
   # POST /decks
   # POST /decks.json
   def create
-    @deck = @deck.deck_cards.new(deck_params)
-    # @deck = Deck.new(deck_params)
+    #@deck = @deck.deck_cards.new(deck_params)
+    @deck = DeckCard.new(deck_card_params)
 
     respond_to do |format|
       if @deck.save
@@ -78,10 +79,10 @@ class DeckCardsController < ApplicationController
     def set_deck_card
       @deck_card = DeckCard.find(params[:id])
     end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_deck
-      @deck = Deck.find(params[:deck_id])
-    end
+    # # Use callbacks to share common setup or constraints between actions.
+    # def set_deck
+    #   @deck = Deck.find(params[:deck_id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_card_params

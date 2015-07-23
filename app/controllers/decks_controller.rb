@@ -45,7 +45,7 @@ class DecksController < ApplicationController
         format.json { render json: @deck, status: :created }
       else
         format.html { render :new }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
+        format.json { render json: { errors: @deck.errors}, status: :unprocessable_entity }
       end
     end
   end

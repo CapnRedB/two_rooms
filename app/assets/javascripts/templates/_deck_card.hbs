@@ -1,0 +1,18 @@
+<tbody>
+  <tr>
+    <td>
+      <label for="card" class='sr-only'>Card</label>
+      {{view "select" content=cards optionLabelPath="content.text_id" optionValuePath="content.id" selection=content.card class="form-control" id="card"}}
+    </td>
+
+    <td>
+      <label for="affiliation" class='sr-only'>Affiliation</label>
+      {{view "select" content=affiliations optionLabelPath="content.text" optionValuePath="content.value" value=content.affiliation class="form-control" id="affiliation"}}
+    </td>
+
+    <td>
+      <button {{action "save"}} class="btn btn-success btn-sm">Done</button>
+      <a {{action 'cancel'}} class='btn-sm'>Cancel</a>
+    </td>
+  </tr>
+</tbody>

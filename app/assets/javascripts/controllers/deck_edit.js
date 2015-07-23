@@ -1,7 +1,6 @@
 TwoRooms.DeckEditController = Ember.Controller.extend({
-	card: null,
-	affiliation: null,
-	error: null,
+	// card: null,
+	// affiliation: null,
 
 	affiliations: [
 		{text: "Required - These cards must go in the deck, but they may be buried.", value: "required" },
