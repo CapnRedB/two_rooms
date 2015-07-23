@@ -23,7 +23,7 @@ TwoRooms.DeckNewRoute = TwoRooms.AuthenticatedRoute.extend({
 			})
 		},
 		cancel: function(){
-			this.transitionTo('decks.index');
+			this.transitionTo('deck.index');
 		}
 	}
 

@@ -7,7 +7,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.unscoped.alpha.all
+    @cards = Card.all
 
     respond_to do |format|
       format.html
