@@ -4,7 +4,7 @@
 			<header><h1>Sign In</h1></header>
 		</div>
 	</div>
-	 {{oauth-links}} 
+	{{oauth-links}} 
 
 	<form method="post" action="/users/sign_in">
 		<div class="form-group">
@@ -19,6 +19,9 @@
 		
 		<button {{action "submit"}} class="btn btn-primary">Login</button>
 		{{#link-to 'application'}}Back{{/link-to}}
+		or
+		{{#link-to 'sign_up'}}Sign Up{{/link-to}}
+
 	</form>
 	<br />
 </div>

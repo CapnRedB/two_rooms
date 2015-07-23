@@ -4,22 +4,7 @@
 			<header><h1>{{name}}</h1></header>
 		</div>
 	</div>
-	<div class="row text-center">
-		<div class="col-md-4">
-			{{#link-to 'games.new' class='btn btn-default'}}New Game{{/link-to}}
-		</div>
-		<div class="col-md-4">
-			{{#link-to 'join' class='btn btn-default'}}Join Game{{/link-to}}
-		</div>
-	</div>
-	<div class="row text-center">
-		<div class="col-xs-6">
-			{{#link-to 'decks' class='btn btn-default'}}Decks{{/link-to}}
-		</div>
-		<div class="col-xs-6">
-			{{#link-to 'cards' class='btn btn-default'}}Cards{{/link-to}}
-		</div>
-	</div>
+	{{outlet}}
 	<div class="row text-center">
 		<div class="col-md-4">
 			<button {{action 'sign_out' }} class='btn btn-danger btn-xs'>Sign Out</button>

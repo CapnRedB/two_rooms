@@ -9,26 +9,7 @@
 			<small>Preferred: use an existing account</small>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<button {{action 'oauth-twitter'}} class="btn btn-default">
-				<span class="fa fa-twitter fa-lg"></span>
-				Twitter
-			</button>
-		</div>
-		<div class="col-xs-12">
-			<button {{action 'oauth-google'}} class="btn btn-default">
-				<span class="fa fa-google fa-lg"></span>
-				Google
-			</button>
-		</div>
-		<div class="col-xs-12">
-			<button {{action 'oauth-facebook'}} class="btn btn-default">
-				<span class="fa fa-facebook fa-lg"></span>
-				Facebook
-			</button>
-		</div>
-	</div>
+	{{oauth-links}} 
 	<div class="row">
 		<div class="col-md-12 text-center">
 			<small>or: sign up here</small>
@@ -51,9 +32,10 @@
 			{{input value=password id="password" type="password" class="form-control"}}
 		</div>
 
-		<button {{action 'create'}} class="btn btn-primary">
-			Create</button>
+		<button {{action 'create'}} class="btn btn-primary">Create</button>
 		{{#link-to 'application'}}Back{{/link-to}}
+		or
+		{{#link-to 'sign_in'}}Sign In{{/link-to}}
 	</form>
 
 </div>		

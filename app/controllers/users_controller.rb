@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
         format.html { redirect_to @user, notice: "Your profile was successfully updated."}
-        format.json { head :no_content }
+          format.json { render json: {}, status: :ok}
       else
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    accessable = [ :name, :email, :nickname ]
+    accessable = [ :name, :email ]
     accessable << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessable)
   end

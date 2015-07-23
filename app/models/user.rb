@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :omniauthable
 
   validates_uniqueness_of :email
+  validates_uniqueness_of :name
   before_save :ensure_authentication_token
 
   has_many :decks
