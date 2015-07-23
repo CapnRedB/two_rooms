@@ -12,7 +12,7 @@ namespace :two_rooms do
     end
 
     tables.each do |table|
-      SeedDump.dump(table.to_s.classify.constantize.unscoped, options)
+      SeedDump.dump(table.to_s.classify.constantize.unscoped.order(:id), options)
     end
   end
 
