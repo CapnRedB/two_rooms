@@ -46,7 +46,7 @@ TwoRooms.NotificationsManager = Ember.Object.create({
  */
 TwoRooms.NotificationsListComponent = Ember.Component.extend({
 
-	classNames: ['Notifications'],
+	classNames: ['notifications'],
 
 	tagName: 'section',
 
@@ -61,7 +61,7 @@ TwoRooms.NotificationsListComponent = Ember.Component.extend({
  */
 TwoRooms.NotificationsListItemComponent = Ember.Component.extend({
 
-	classNames: ['Notifications__item', 'alert', 'alert-dismissible', 'affix-top'],
+	classNames: ['notification', 'alert', 'alert-dismissible', 'affix-top'],
 
 	classNameBindings: ['typeClass'],
 

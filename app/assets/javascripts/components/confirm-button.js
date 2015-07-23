@@ -16,6 +16,7 @@ TwoRooms.ConfirmButtonComponent = Ember.Component.extend({
 				self.reset();
 				this.clearTimeout();
 			},this.get('duration')));
+			return false;
 		},
 		confirm: function() {
 			this.set('isShowingConfirm', true);

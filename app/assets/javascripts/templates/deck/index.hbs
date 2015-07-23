@@ -1,16 +1,39 @@
 <tbody>
   {{#each model.deck_cards as |deck_card|}}
-    {{#link-to 'deck.edit' deck_card tagName='tr'}}
-      <td>{{short-card card=deck_card.card}}</td>
-      <td>{{deck_card.affiliation}}</td>
-      <td><button {{action "remove" deck_card}} class="btn btn-danger btn-xs">Remove</button></td>
-    {{/link-to}}
+    {{#if model.is_owned}}
+      <tr>
+        {{#link-to 'deck.edit' deck_card tagName='td'}}  
+          {{short-card card=deck_card.card}}
+        {{/link-to}}
+        {{#link-to 'deck.edit' deck_card tagName='td'}}  
+          {{deck_card.affiliation}}
+        {{/link-to}}
+        <td>
+          {{confirm-button action="deleteDeckCard" label="Remove" param=deck_card.id}}
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        {{#link-to 'card' deck_card.card tagName='td'}}  
+          {{short-card card=deck_card.card}}
+        {{/link-to}}
+        {{#link-to 'card' deck_card.card tagName='td'}}  
+          {{deck_card.affiliation}}
+        {{/link-to}}
+        <td>
+        </td>
+      </tr>
+    {{/if}}
   {{/each}}
 </tbody>
 <tfoot>
   <tr>
     <td></td>
     <td></td>
-    <td>{{#link-to "deck.new" model}}Add{{/link-to}}</td>
+    <td>
+      {{#if model.is_owned}}
+        {{#link-to "deck.new" model}}Add{{/link-to}}
+      {{/if}}
+    </td>
   </tr>
 </tfoot>

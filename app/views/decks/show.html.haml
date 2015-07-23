@@ -12,6 +12,22 @@
   %p
     %strong This deck requires burying a card
 
+%p
+  Cards
+%table.table
+  %thead
+    %th Card
+    %th Affiliation
+  %tbody
+    - @deck.deck_cards.sort{|a,b| a.card.sort_order <=> b.card.sort_order}.each do |deck_card|
+      %tr
+        %td= render partial: "cards/short", object: deck_card.card
+        %td= deck_card.affiliation
+
+- unless @deck.warnings.empty?
+  .alert.alert-warning
+    = @deck.warnings.html_safe
+
 = link_to 'Edit', edit_deck_path(@deck)
 \|
 = link_to 'Back', decks_path

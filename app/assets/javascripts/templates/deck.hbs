@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid offset">
   <div class="row">
     <div class="col-md-12 text-center">
       <header>
@@ -7,16 +7,28 @@
     </div>
   </div>
   <form method="post" action="/decks">
-    <div class="form-group">
-      <label for="name">Name</label>
-      {{input value=model.name id="name" class="form-control" placeholder="Name of your deck"}}
-      <label for="description" class='sr-only'>Description</label>
-      {{textarea value=model.description id="description" type="description" class="form-control" placeholder="Optional Description" }}
-    </div>
+    {{#if model.is_owned }}
+      <div class="form-group">
+        <label for="name" class="sr-only">Name</label>
+        {{input value=model.name id="name" class="form-control" placeholder="Name of your deck"}}
+        <label for="description" class='sr-only'>Description</label>
+        {{textarea value=model.description id="description" type="description" class="form-control" placeholder="Optional Description" }}
+      </div>
+      <div class="checkbox">
+        <label for="bury">{{input type="checkbox" name="bury" id="bury" checked=model.bury}} Bury a card?</label>
+      </div>
+    {{else}}
+      <p>{{model.description}}</p>
+      {{#if model.bury}}
+      <p>A card will be buried, be sure there are secondaries.</p>
+      {{/if}}
+    {{/if}}
 
-    <div class="checkbox">
-      <label for="bury">{{input type="checkbox" name="bury" id="bury" checked=bury}} Bury a card?</label>
-    </div>
+    <p>{{model.player_count}}</p>
+
+    {{#if model.has_warnings}}
+      <div class="alert alert-warning">{{model.warnings}}</div>
+    {{/if}}
 
     <table class="table">
       <thead>
@@ -26,12 +38,16 @@
           <th></th>
         </tr>
       </thead>
-      {{outlet}}
+      {{outlet isOwned=isOwned}}
     </table>
+    <hr />
 
-    <button {{action "save"}} class="btn btn-primary">Save</button>
+    {{#if model.is_owned}}
+      <button {{action "save"}} class="btn btn-primary">Save Deck</button>
+    {{/if}}
     {{#link-to 'decks'}}Back{{/link-to}}
+    <br />
   </form>
+  <br />
 </div>
-
 

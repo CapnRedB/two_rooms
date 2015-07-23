@@ -28,4 +28,31 @@ class Deck < ActiveRecord::Base
     end
   end
 
+
+  def warnings
+    warnings = []
+
+    red_counts = {}
+    blue_counts = {}
+
+    ["required", "no_bury", "filler", "parity"].each do |affiliation|
+      red_counts[affiliation] = deck_cards.select{|dc| dc.card.color == 'Red' and dc.affiliation == affiliation}.count
+      blue_counts[affiliation] = deck_cards.select{|dc| dc.card.color == 'Blue' and dc.affiliation == affiliation}.count
+
+      case red_counts[affiliation] <=> blue_counts[affiliation]
+      when -1
+        warnings << "This deck has more #{affiliation} blue cards than #{affiliation} red cards. "
+      when 1
+        warnings << "This deck has more #{affiliation} red cards than #{affiliation} blue cards. "
+      end
+    end
+
+    if warnings.empty?
+      nil
+    else
+      #{}"<ul><li>" + warnings.join("</li><li>") + "</li></ul>"
+      warnings.join()
+    end
+  end
+  
 end
