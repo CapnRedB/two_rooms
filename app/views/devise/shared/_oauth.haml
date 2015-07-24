@@ -1,6 +1,9 @@
 - resource_class.omniauth_providers.each do |provider|
+  - icon = provider
+  - if provider == 'google_oauth2'
+    - icon = 'google'
   .row
     .col-xs-12
       = link_to "users/auth/#{provider}", class: "btn btn-default" do
-        %span{ class: "fa fa-#{provider} fa-lg" }
-        = provider.capitalize
+        %span{ class: "fa fa-#{icon} fa-lg" }
+        = icon.capitalize
