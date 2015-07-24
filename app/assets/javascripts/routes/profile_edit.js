@@ -1,5 +1,6 @@
 TwoRooms.ProfileEditRoute = TwoRooms.AuthenticatedRoute.extend({
 	beforeModel: function() {
+		this._super();
 		if ( ! localStorage['name'] ) {
 			TwoRooms.NotificationsManager.push("What is your name?", "warning");
 		}

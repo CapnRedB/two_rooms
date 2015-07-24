@@ -20,6 +20,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def after_sign_in_path_for(resource)
-      finish_signup_path(resource)
+      # finish_signup_path(resource)
+      "/#/oauth"
     end
 end

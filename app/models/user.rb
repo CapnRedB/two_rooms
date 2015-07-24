@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
     user = signed_in_resource ? signed_in_resource : identity.user
     
     if user.nil?
+
+      #twitter
       email = auth.info.email
       user = User.where(email: email).first if email
       name = auth.info.name

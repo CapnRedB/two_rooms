@@ -1,11 +1,20 @@
 class Users::SessionsController < Devise::SessionsController
   respond_to :html, :json
-# before_filter :configure_sign_in_params, only: [:create]
+  # before_filter :configure_sign_in_params, only: [:create]
 
-  # GET /user/sign_in
-  # def new
-  #   super
-  # end
+
+  # GET /users/signed_in
+  def show
+    unless current_user.nil?
+      current_user.ensure_authentication_token
+      current_user.save
+
+      respond_to do |format|
+        format.html
+        format.json { render json: { token: current_user.authentication_token, email: current_user.email, name: current_user.name, user_id: current_user.id}, status: :ok }
+      end
+    end
+  end
 
   # POST /user/sign_in
   def create

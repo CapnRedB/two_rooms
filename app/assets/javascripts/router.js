@@ -5,6 +5,7 @@ TwoRooms.Router.map(function() {
   this.route('join');
   this.route('sign_up');
   this.route('sign_in');
+  this.route('oauth');
   this.route('profile', function(){
     this.route('edit');
   });
