@@ -33,7 +33,10 @@ class User < ActiveRecord::Base
           password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation! if user.respond_to?(:skip_confirmation)
-        user.save!
+        unless user.save!
+          user.name = "";
+          user.save!
+        end
       end
     end
 
