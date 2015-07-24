@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
     user = signed_in_resource ? signed_in_resource : identity.user
     
+    puts auth.inspect
     if user.nil?
 
       #twitter
