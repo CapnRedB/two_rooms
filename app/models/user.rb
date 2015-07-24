@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           name: name,
-          email: email ? email : "oauth-#{name}@#{auth.provider}.com",
+          email: email ? email : "oauth-#{name.gsub(/ /,'')}@#{auth.provider}.com",
           password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation! if user.respond_to?(:skip_confirmation)
