@@ -15,7 +15,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       }
     end
 
-    [:twitter, :google].each do |provider|
+    [:twitter, :google_oauth2, :facebook].each do |provider|
       provides_callback_for provider
     end
 
