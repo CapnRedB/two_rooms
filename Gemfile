@@ -63,6 +63,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'seed_dump'
+
 end
 
 group :production do

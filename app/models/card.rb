@@ -13,6 +13,10 @@ class Card < ActiveRecord::Base
   has_many :inverse_relationships, :class_name => "CardRelationship", :foreign_key => "to_id"
   has_many :inverse_relations, :through => :inverse_relationships, :source => :card
 
+  validates :title, presence: true
+  validates :title, uniqueness: { scope: :faction }
+  validates :faction, presence: true
+
   def relationships_grouped
     relationships.group_by(&:description)
   end

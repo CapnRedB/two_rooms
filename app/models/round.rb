@@ -9,6 +9,7 @@ class Round < ActiveRecord::Base
 
   default_scope { order "game_type DESC, number ASC"}
 
+  validates :number, uniqueness: { scope: :game_type }
 
   def title
     "#{game_type} - Round #{number}"

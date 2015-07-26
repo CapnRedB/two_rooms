@@ -1,11 +1,44 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  game_type: MyString
+  game_type: Basic
   number: 1
-  duration: 1
+  duration: 3
 
 two:
-  game_type: MyString
+  game_type: Basic
+  number: 2
+  duration: 2
+
+advanced_one:
+  game_type: Advanced
   number: 1
+  duration: 5
+
+three:
+  game_type: Basic
+  number: 3
   duration: 1
+
+
+
+advanced_two:
+  game_type: Advanced
+  number: 2
+  duration: 4
+
+advanced_three:
+  game_type: Advanced
+  number: 3
+  duration: 3
+
+advanced_four:
+  game_type: Advanced
+  number: 4
+  duration: 2
+
+advanced_five:
+  game_type: Advanced
+  number: 5
+  duration: 1
+

@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  subtitle: MyString
-  short_desc: MyText
-  long_desc: MyText
-  color: MyString
-  faction: MyString
-  strategy: MyText
-  url: MyString
+president:
+  title: President
+  color: Blue
+  faction: Blue
 
-two:
-  title: MyString
-  subtitle: MyString
-  short_desc: MyText
-  long_desc: MyText
-  color: MyString
-  faction: MyString
-  strategy: MyText
-  url: MyString
+bomber:
+  title: Bomber
+  color: Red
+  faction: Red
+
+red_spy: 
+  title: Spy
+  color: Blue
+  faction: Red
+
+gambler:
+  title: Gambler
+  color: Grey
+  faction: Grey
