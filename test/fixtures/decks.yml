@@ -2,12 +2,12 @@
 
 one:
   user_id: 1
-  name: MyString
+  name: Basic
   description: MyText
   bury: false
 
 two:
   user_id: 1
-  name: MyString
+  name: Standard
   description: MyText
   bury: false

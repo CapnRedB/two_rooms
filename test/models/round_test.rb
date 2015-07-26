@@ -9,7 +9,7 @@ class RoundTest < ActiveSupport::TestCase
     round = Round.new
     round.game_type = "Basic"
     round.number = 1
-    assert ! round.save, "Duplicate round saved without errors"
+    assert_not round.save, "Duplicate round saved without errors"
 
     round.number = 4
     assert round.save, "Round number scoped by type"

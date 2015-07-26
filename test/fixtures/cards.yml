@@ -15,7 +15,20 @@ red_spy:
   color: Blue
   faction: Red
 
+red_shy:
+  title: Shy Guy
+  color: Red
+  faction: Red
+
 gambler:
   title: Gambler
   color: Grey
   faction: Grey
+
+red_team:
+  title: Red Team
+  faction: Red
+
+blue_team:
+  title: Blue Team
+  faction: Blue

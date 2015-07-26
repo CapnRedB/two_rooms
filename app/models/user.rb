@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  PLACEHOLDER = 'name@example.com'
-  PLACEHOLDER_REGEX = /name@example.com/
+  # PLACEHOLDER = 'name@example.com'
+  # PLACEHOLDER_REGEX = /name@example.com/
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and 
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
          :omniauthable
 
   validates_uniqueness_of :email
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, allow_blank: true
   before_save :ensure_authentication_token
 
   has_many :decks

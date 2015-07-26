@@ -2,12 +2,12 @@
 
 one:
   round_id: 1
-  player_min: 1
-  player_max: 1
-  count: 1
+  player_min: 6
+  player_max: 8
+  count: 2
 
 two:
   round_id: 1
-  player_min: 1
-  player_max: 1
-  count: 1
+  player_min: 9
+  player_max: 20
+  count: 4
