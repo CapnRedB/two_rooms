@@ -3,9 +3,9 @@
 one:
   deck_id: 1
   card_id: 1
-  affiliation: MyString
+  affiliation: required
 
 two:
   deck_id: 1
-  card_id: 1
-  affiliation: MyString
+  card_id: 2
+  affiliation: required

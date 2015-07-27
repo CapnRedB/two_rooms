@@ -48,4 +48,9 @@ class RoundTest < ActiveSupport::TestCase
     end
   end
 
+  test "has many swaps" do
+    assert_respond_to rounds(:one), :swaps
+    assert rounds(:one).swaps.count == 3, "Basic - Round 1 has three swaps"
+  end
+
 end

@@ -9,5 +9,10 @@ one:
 two:
   round_id: 1
   player_min: 9
-  player_max: 20
+  player_max: 17
+  count: 3
+
+three:
+  round_id: 1
+  player_min: 18
   count: 4

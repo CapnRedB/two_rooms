@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 president:
+  id: 1
   title: President
   color: Blue
   faction: Blue
 
 bomber:
+  id: 2
   title: Bomber
   color: Red
   faction: Red

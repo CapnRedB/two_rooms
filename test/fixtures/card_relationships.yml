@@ -2,10 +2,10 @@
 
 one:
   card_id: 1
-  to_id: 1
-  description: MyString
+  to_id: 2
+  description: Enemy
 
 two:
-  card_id: 1
-  to_id: 1
+  card_id: 3
+  to_id: 2
   description: MyString
