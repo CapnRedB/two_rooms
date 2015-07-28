@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CardsControllerTest < ActionController::TestCase
   setup do
-    @card = cards(:one)
+    @card = cards(:president)
   end
 
   test "should get index" do
@@ -11,39 +11,19 @@ class CardsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:cards)
   end
 
-  test "should get new" do
-    get :new
+  test "index should respond with json" do
+    get :index, format: :json
     assert_response :success
+    assert_not_nil assigns(:cards)
+    assert JSON.parse(@response.body)
   end
 
-  test "should create card" do
-    assert_difference('Card.count') do
-      post :create, card: { color: @card.color, faction: @card.faction, long_desc: @card.long_desc, short_desc: @card.short_desc, strategy: @card.strategy, subtitle: @card.subtitle, title: @card.title, url: @card.url }
-    end
-
-    assert_redirected_to card_path(assigns(:card))
+  test "index.json should contain cards" do
+    get :index, format: :json
+    
+    body = JSON.parse(@response.body)
+    assert body["cards"], "Root of json response shoud contain cards"
   end
 
-  test "should show card" do
-    get :show, id: @card
-    assert_response :success
-  end
 
-  test "should get edit" do
-    get :edit, id: @card
-    assert_response :success
-  end
-
-  test "should update card" do
-    patch :update, id: @card, card: { color: @card.color, faction: @card.faction, long_desc: @card.long_desc, short_desc: @card.short_desc, strategy: @card.strategy, subtitle: @card.subtitle, title: @card.title, url: @card.url }
-    assert_redirected_to card_path(assigns(:card))
-  end
-
-  test "should destroy card" do
-    assert_difference('Card.count', -1) do
-      delete :destroy, id: @card
-    end
-
-    assert_redirected_to cards_path
-  end
 end

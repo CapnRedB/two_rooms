@@ -7,4 +7,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  include Devise::TestHelpers
+
+end
+
+class ActionController::TestCase < ActiveSupport::TestCase
+
+  def logged_in
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:joe)
+  end
 end

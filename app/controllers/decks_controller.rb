@@ -60,12 +60,12 @@ class DecksController < ApplicationController
           format.json { render json: @deck, status: :ok}
         else
           format.html { render :edit }
-          format.json { render json: @deck.errors, status: :unprocessable_entity }
+          format.json { render json: {errors: @deck.errors }, status: :unprocessable_entity }
         end
       end
     else
       respond_to do |format|
-        format.html { render :show }
+        format.html { redirect_to @deck, notice: "Unauthorized" }
         format.json { render json: @deck, status: :unauthorized }
       end
     end
@@ -74,10 +74,17 @@ class DecksController < ApplicationController
   # DELETE /decks/1
   # DELETE /decks/1.json
   def destroy
-    @deck.destroy
-    respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
-      format.json { head :no_content }
+    if @deck.user == current_user or current_user.is_admin?
+      @deck.destroy
+      respond_to do |format|
+        format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @deck, notice: "Unauthorized" }
+        format.json { render json: @deck, status: :unauthorized }
+      end
     end
   end
 

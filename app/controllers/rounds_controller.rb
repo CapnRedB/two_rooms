@@ -1,6 +1,9 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :edit, :update, :destroy]
 
+  skip_before_filter :authenticate_user_from_token!, only: [:index, :show]
+  skip_before_filter :authenticate_user!, only: [:index, :show]
+
   # GET /rounds
   # GET /rounds.json
   def index
@@ -9,6 +12,7 @@ class RoundsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf { send_data Round.render, type: "application/pdf", disposition: "inline" }
+      format.json { render json: @rounds }
     end
   end
 

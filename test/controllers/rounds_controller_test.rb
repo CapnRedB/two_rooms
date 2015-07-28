@@ -11,39 +11,20 @@ class RoundsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:rounds)
   end
 
-  test "should get new" do
-    get :new
+  test "index should respond with json" do
+    get :index, format: :json
     assert_response :success
+    assert JSON.parse(@response.body)
   end
 
-  test "should create round" do
-    assert_difference('Round.count') do
-      post :create, round: { duration: @round.duration, game_type: @round.game_type, number: @round.number }
-    end
-
-    assert_redirected_to round_path(assigns(:round))
-  end
-
-  test "should show round" do
-    get :show, id: @round
+  test "index.json should include rounds and swaps" do
+    get :index, format: :json
     assert_response :success
+    assert JSON.parse(@response.body)
+    body = JSON.parse(@response.body)
+    assert body["rounds"], "Response should contain root node of rounds"
+    assert body["swaps"], "Response should contain root node of swaps"
+    assert_not body["cards"], "Response should not contain cards"
   end
 
-  test "should get edit" do
-    get :edit, id: @round
-    assert_response :success
-  end
-
-  test "should update round" do
-    patch :update, id: @round, round: { duration: @round.duration, game_type: @round.game_type, number: @round.number }
-    assert_redirected_to round_path(assigns(:round))
-  end
-
-  test "should destroy round" do
-    assert_difference('Round.count', -1) do
-      delete :destroy, id: @round
-    end
-
-    assert_redirected_to rounds_path
-  end
 end
