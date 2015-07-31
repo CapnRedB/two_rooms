@@ -28,6 +28,8 @@ TwoRooms.SignInController = Ember.Controller.extend({
 				localStorage.removeItem('afterAuth');
 
 				TwoRooms.NotificationsManager.push("Logged in.", 'success');
+				self.controllerFor("application").set("signedIn", true);
+
 			}, function(response) {
 				console.log(response.responseJSON.error);
 				TwoRooms.NotificationsManager.push(response.responseJSON.error, 'danger');

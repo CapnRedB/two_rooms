@@ -8,6 +8,7 @@ TwoRooms.ProfileController = Ember.Controller.extend({
 			
 			TwoRooms.NotificationsManager.push("Logged out.", 'info');
 			this.transitionToRoute("/");
+			this.controllerFor("application").set("signedIn", false);
 		}
 	}
 })

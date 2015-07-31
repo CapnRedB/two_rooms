@@ -30,6 +30,7 @@ TwoRooms.SignUpController = Ember.Controller.extend({
 				localStorage.removeItem('afterAuth');
 
 				TwoRooms.NotificationsManager.push("Logged in.", 'success');
+				self.controllerFor("application").set("signedIn", true);
 
 			}, function(response) {
 				var message = "Sign Up Failed. ";

@@ -2,7 +2,6 @@
 
 TwoRooms.Router.map(function() {
   // this.resource('posts');
-  this.route('join');
   this.route('sign_up');
   this.route('sign_in');
   this.route('oauth');
@@ -12,6 +11,7 @@ TwoRooms.Router.map(function() {
 
 
   this.route('games', function(){
+    this.route('join');
     this.route('new');
   }); 
   this.route('game', {path: '/game/:game_id'});

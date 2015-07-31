@@ -1,0 +1,17 @@
+<div class="container-fluid offset">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>Join Game</h1></header>
+		</div>
+	</div>
+	<form>
+		<div class="form-group">
+			<label for="code">Game Code</label>
+			{{input value=code id="code" class="form-control"}}
+		</div>
+		
+		
+		<button {{action 'join'}} class="btn btn-primary">Join</button>
+		{{#link-to 'application'}}Back{{/link-to}}
+	</form>
+</div>
