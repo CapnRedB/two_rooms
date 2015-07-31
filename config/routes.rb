@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations' }
   devise_scope :user do
     get '/users/signed_in', to: 'users/sessions#show', as: 'session'
+    put '/users/update', to: 'users#update'
   end
 
   resources :decks

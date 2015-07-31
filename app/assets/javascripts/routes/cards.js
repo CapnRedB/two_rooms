@@ -1,5 +1,10 @@
 TwoRooms.CardsRoute = Ember.Route.extend({
 	model: function() {
-		return $.getJSON("/cards.json");
-	}
+		return this.store.all('card');
+		// return $.getJSON("/cards.json");
+	},
+
+	// setupController: function(controller, model) {
+	// 	controller.set("model", this.controllerFor("application").get("cards"));
+	// }
 });

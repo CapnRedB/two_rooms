@@ -1,7 +1,7 @@
 TwoRooms.DecksRoute = Ember.Route.extend({
 	model: function() {
-		this.store.find('deck');
-		return $.get("/decks.json");
+		return this.store.all('deck');
+//		return $.get("/decks.json");
 	},
 
 	actions: {

@@ -9,14 +9,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user_from_token!
   before_filter :authenticate_user!
 
-  def ensure_signup_complete
-    return if action_name == 'finish_signup'
-
-    if current_user && current_user.name.blank?
-      redirect_to finish_signup_path(current_user)
-    end
-  end
-
 
   protected
 
@@ -28,7 +20,10 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate_user_from_token!
+      #p "authenticate_user_from_token"
       authenticate_with_http_token do |token, options|
+        # p token
+        # p options
         user_email = options[:email].presence
         user = user_email && User.find_by_email(user_email)
 

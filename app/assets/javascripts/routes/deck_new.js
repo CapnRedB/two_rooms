@@ -7,9 +7,10 @@ TwoRooms.DeckNewRoute = TwoRooms.AuthenticatedRoute.extend({
 		return model;
 	},
 	controllerName: 'deckEdit',
+
 	setupController: function(controller, model) {
 		controller.set('model', model);
-		controller.set('cards', this.store.findAll('card'));
+		controller.set('cards', this.store.all('card'));
 	},
 	actions: {
 		save: function() {

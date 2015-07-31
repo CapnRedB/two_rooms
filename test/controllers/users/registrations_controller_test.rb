@@ -8,8 +8,8 @@ class Users::RegistrationsControllerTest < ActionController::TestCase
   test "users can sign up" do
     for_users
 
-    assert_difference("User.count", 1, "Should be another user") do
-      post :create, format: :json, user: { name: "Joe", email: "joflynn@example.com", password: "bananas1" }
+    assert_difference("User.count", 1, "Should have another user") do
+      post :create, format: :json, user: { name: "Jose", email: "joflynn@example.com", password: "bananas1" }
     end
 
     body = JSON.parse(@response.body)
@@ -17,6 +17,21 @@ class Users::RegistrationsControllerTest < ActionController::TestCase
     assert_equal body["name"], new_user.name, "Name should have saved"
     assert_equal body["email"], new_user.email, "Email should have saved"
     assert_equal body["token"], new_user.authentication_token, "Token should be right"
+  end
+
+  test "users can't sign up with an existing name" do
+    users(:joe).save
+    for_users
+
+    before = User.count
+
+    post :create, format: :json, user: { name: "Joe", email: "joflynn@example.com", password: "bananas1" }
+    
+    body = JSON.parse(@response.body)
+    assert_response :not_acceptable, "Should reject duplicate user"
+    assert body['errors'], "should kick error"
+    assert body['errors']['name'], "Should kick name error"
+    assert body['errors']['name'][0].match(/taken/), "Name already taken"
   end
 
   test "must be logged in to edit" do

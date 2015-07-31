@@ -1,4 +1,4 @@
-TwoRooms.SignInRoute = Ember.Route.extend({
+TwoRooms.LoggingInRoute = Ember.Route.extend({
 	beforeModel: function() {
 		if ( localStorage['token'] != undefined ) {
 			TwoRooms.NotificationsManager.push("You're already Logged in", "info");
@@ -6,3 +6,6 @@ TwoRooms.SignInRoute = Ember.Route.extend({
 		}
 	}
 });
+
+TwoRooms.SignInRoute = TwoRooms.LoggingInRoute.extend();
+TwoRooms.SignUpRoute = TwoRooms.LoggingInRoute.extend();
