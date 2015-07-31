@@ -7,10 +7,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  #POST /resource
+  def create
+    super do |user|
+      if user.persisted?
+        if json_request? 
+          render json: { token: user.authentication_token, 
+                         email: user.email, 
+                         name: user.name, 
+                         user_id: user.id }, status: :created and return
+        end
+      else
+        if json_request?
+          render json: { errors: user.errors}, status: :not_acceptable and return
+        end
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit

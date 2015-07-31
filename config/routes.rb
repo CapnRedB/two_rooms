@@ -1,36 +1,25 @@
 Rails.application.routes.draw do
   
-  resources :deck_cards
+
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_scope :user do
+    get '/users/signed_in', to: 'users/sessions#show', as: 'session'
+  end
 
   resources :decks
-
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks', sessions: 'users/sessions' }
-  devise_scope :user do
-  #   match '/users/signed_in' => 'users/sessions#show', via: [:get], as: :session
-    get '/users/signed_in', to: 'users/sessions#show', as: 'session'
-    # get "/users/:id", to: "users#show", as: "user"
-    # get "/users/:id/edit", to: "users#edit", as: "edit_user"
-  end
-  resources :users
-
-  # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-
-  resources :card_relationships
-
-  resources :rounds
-
-  resources :rounds do
-    resources :swaps
-  end
-
+  resources :deck_cards
 
   get 'cards/guide' => "cards#guide"
   resources :cards do
     get 'flip'
   end
   post 'cards/sort' => "cards#sort"
+  resources :card_relationships
 
-  #root 'cards#index'
+  resources :rounds do
+    resources :swaps
+  end
+  
   root 'ember#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

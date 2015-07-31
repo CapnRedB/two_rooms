@@ -43,9 +43,11 @@ class DecksControllerTest < ActionController::TestCase
   end
 
   test "post decks.json should require logged in" do
-    assert_throws(:warden) do
-      post :create, deck: { name: "Standard Two" }, format: :json
-    end
+    # logged_out
+    post :create, deck: { name: "Standard Two" }, format: :json
+    body = JSON.parse(@response.body)
+    assert body['error'], "Should kick an error"
+    assert_equal body['error'], "You need to sign in or sign up before continuing."
   end
 
   test "post decks.json should add a new deck" do

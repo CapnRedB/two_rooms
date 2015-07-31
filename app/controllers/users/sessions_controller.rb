@@ -5,13 +5,17 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /users/signed_in
   def show
-    unless current_user.nil?
-      current_user.ensure_authentication_token
-      current_user.save
+    respond_to do |format|
+      unless current_user.nil?
+        current_user.ensure_authentication_token
+        current_user.save
 
-      respond_to do |format|
-        format.html
-        format.json { render json: { token: current_user.authentication_token, email: current_user.email, name: current_user.name, user_id: current_user.id}, status: :ok }
+        format.json { render json: { token: current_user.authentication_token, 
+                                     email: current_user.email, 
+                                     name: current_user.name, 
+                                     user_id: current_user.id}, status: :ok }
+      else
+        format.json { render json: {}, status: :unauthorized }
       end
     end
   end
@@ -22,7 +26,10 @@ class Users::SessionsController < Devise::SessionsController
       user.ensure_authentication_token
       user.save
       if json_request?
-        render json: { token: user.authentication_token, email: user.email, name: user.name, user_id: user.id }, status: :created and return
+        render json: { token: user.authentication_token, 
+                       email: user.email, 
+                       name: user.name, 
+                       user_id: user.id }, status: :created and return
       end
     end
   end

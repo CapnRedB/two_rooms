@@ -22,13 +22,13 @@ class DeckTest < ActiveSupport::TestCase
 
   test "name is unique" do
     assert decks(:two).save
-    assert_not Deck.new(name: "Standard", user_id: 1).save, "Duplicate name fails to save"
-    assert Deck.new(name: "Standard2").save, "Unique name saves"
+    assert_not Deck.new(name: "Standard", user_id: decks(:two).user_id).save, "Duplicate name fails to save"
+    assert Deck.new(name: "Standard2", user_id: decks(:two).user_id).save, "Unique name saves"
   end
 
   test "name is scoped to user" do
     assert decks(:two).save
-    assert Deck.new(name: "Standard", user_id: 2).save, "Different users can use the same name"
+    assert Deck.new(name: "Standard", user_id: 1).save, "Different users can use the same name"
   end
 
 

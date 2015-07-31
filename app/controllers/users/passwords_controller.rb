@@ -14,9 +14,14 @@ class Users::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # PUT /resource/password
+  #PUT /resource/password
   # def update
-  #   super
+  #   super do |user|
+  #     user.save
+  #     if json_request?
+  #       render json: {message: "Password updated"}, staus: :ok and return
+  #     end
+  #   end
   # end
 
   # protected

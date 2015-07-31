@@ -6,15 +6,28 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
-  include Devise::TestHelpers
-
 end
 
 class ActionController::TestCase < ActiveSupport::TestCase
+  # Add more helper methods to be used by all tests here...
+  include Devise::TestHelpers
 
-  def logged_in
+  def for_users
     @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
+  
+  def logged_in
+    for_users
     sign_in users(:joe)
   end
+
+  def logged_in?
+    !! current_user
+  end
+
+
+  # def logged_out
+  #   @request.env["devise.mapping"] = Devise.mappings[:user]
+  #   sign_out :user
+  # end
 end
