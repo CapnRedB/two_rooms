@@ -1,14 +1,18 @@
+// for more details see: http://emberjs.com/guides/models/defining-models/
+
 TwoRooms.Game = DS.Model.extend({
-	title: DS.attr('string'),
-	subtitle: DS.attr('string'),
-	short_desc: DS.attr('string'),
-	long_desc: DS.attr('string'),
-	color: DS.attr('string'),
-	faction: DS.attr('string'),
-	team: DS.attr('string'),
-	strategy: DS.attr('string'),
-	required_text: DS.attr('string'),
-	recommended_text: DS.attr('string'),
-	large_icon: DS.attr('string'),
-	text_id: DS.attr('string'),
+  user_id: DS.attr('number'),
+  deck: DS.belongsTo('deck'),
+  game_type: DS.attr('string'),
+  status: DS.attr('string'),
+  outcome: DS.attr('string'),
+  code: DS.attr('string'),
+
+  players: DS.hasMany('game_player'),
+  swaps: DS.hasMany('game_swap'),
+
+  is_owned: function() {
+  	return this.get('user_id') == localStorage['user_id'];
+  }.property('user_id'),
+
 });

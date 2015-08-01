@@ -1,0 +1,29 @@
+%h1 Listing game_swaps
+
+%table
+  %thead
+    %tr
+      %th Game
+      %th Round
+      %th Sequence
+      %th A to b
+      %th B to a
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @game_swaps.each do |game_swap|
+      %tr
+        %td= game_swap.game_id
+        %td= game_swap.round_id
+        %td= game_swap.sequence
+        %td= game_swap.a_to_b_id
+        %td= game_swap.b_to_a_id
+        %td= link_to 'Show', game_swap
+        %td= link_to 'Edit', edit_game_swap_path(game_swap)
+        %td= link_to 'Destroy', game_swap, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Game swap', new_game_swap_path

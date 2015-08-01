@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719014057) do
+ActiveRecord::Schema.define(version: 20150731190943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,38 @@ ActiveRecord::Schema.define(version: 20150719014057) do
     t.boolean  "bury"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "game_players", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.string   "location"
+    t.boolean  "leader"
+    t.integer  "voting_for_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "game_swaps", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "round_id"
+    t.integer  "sequence"
+    t.integer  "a_to_b_id"
+    t.integer  "b_to_a_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "deck_id"
+    t.string   "game_type"
+    t.string   "status"
+    t.text     "outcome"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "identities", force: :cascade do |t|

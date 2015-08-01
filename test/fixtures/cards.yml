@@ -32,5 +32,6 @@ red_team:
   faction: Red
 
 blue_team:
+  id: 7
   title: Blue Team
   faction: Blue

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Game:
+  = @game_swap.game_id
+%p
+  %b Round:
+  = @game_swap.round_id
+%p
+  %b Sequence:
+  = @game_swap.sequence
+%p
+  %b A to b:
+  = @game_swap.a_to_b_id
+%p
+  %b B to a:
+  = @game_swap.b_to_a_id
+
+= link_to 'Edit', edit_game_swap_path(@game_swap)
+\|
+= link_to 'Back', game_swaps_path

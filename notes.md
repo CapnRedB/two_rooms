@@ -116,3 +116,23 @@ GamePlayers
 	game_id
 	user_id
 	card_id
+	location:string (a|b)
+	leader:boolean
+	voting_for_id:integer
+
+GameSwap
+	game_id:integer
+	round_id:integer
+	sequence:integer
+	a_to_b_id:integer
+	b_to_a_id:integer
+
+
+
+
+##Rule Variants
+Untimed					It is possible to have rounds without time limits, therefore requiring no timer at all. To do this, after a leader has publicly announced their hostage(s), they may wait in the hallway between rooms for the opposing leader.
+
+Privacy Promise			Some players prefer to have guaranteed privacy whenever doing any card sharing or color sharing. The privacy promise rule variant forces all players to do any card sharing or color sharing in a secluded private area away from the prying eyes of other players. This works really well when playing with any characters that might give away their identity when others witness consensual revealing (e.g. Zombie, Hot Potato, Identity Thief, Body Snatcher, Warewolf, etc.)
+
+Premature Rejection		There are adanced characters that can lose during the first round (e.g. Agoraphobe, Nuclear Tyrant, etc.). Players can find this pretty demoralizing. This variant allows grey characters that lose the game prior to the last round to treat their card as the Gambler. This is an alternative win objective, allowing these players to remain involved in the game to gain some type of redeeming win.

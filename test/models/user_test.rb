@@ -41,4 +41,8 @@ class UserTest < ActiveSupport::TestCase
     assert users(:joe).save
     assert_respond_to users(:joe), :decks, "User should have many decks"
   end
+
+  test "owns games" do
+    assert_respond_to users(:joe), :games, "User should have many decks"
+  end
 end

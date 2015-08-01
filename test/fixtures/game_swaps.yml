@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_id: 2
+  round_id: 1
+  sequence: 1
+  a_to_b_id: 1
+  b_to_a_id: 2
+
+two:
+  game_id: 2
+  round_id: 2
+  sequence: 1
+  a_to_b_id: 2
+  b_to_a_id: 1

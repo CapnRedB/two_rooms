@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
 
   has_many :decks
+  has_many :games
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
