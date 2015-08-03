@@ -13,8 +13,12 @@ TwoRooms.Router.map(function() {
 
   this.route('games', function(){
     this.route('new');
+    this.route('join');
   }); 
-  this.route('game', {path: '/game/:game_id'});
+  
+  this.route('game', {path: '/game/:game_id'}, function(){
+    this.route('code');
+  }); 
 
 
   this.route('decks', function(){

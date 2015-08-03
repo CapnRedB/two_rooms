@@ -71,10 +71,6 @@ TwoRooms.NotificationsListItemComponent = Ember.Component.extend({
 		return 'alert-' + this.get('item.type');
 	}.property('item.type'),
 
-	// isSuccess: function() {
-	// 	return this.get('item.type') === 'success';
-	// }.property('item.type'),
-
 	buttonIcon: function() {
 		var icon = "fa-times";
 		if (this.get('item.type') == 'success') {
@@ -98,7 +94,6 @@ TwoRooms.NotificationsListItemComponent = Ember.Component.extend({
 	clearNotification: function() {
 		this.$().fadeOut();
 		TwoRooms.NotificationsManager.get('content').removeObject(this.get('content'));
-	//	this.set('timer', null);
 	},
 
 	clearTimeout: function() {
@@ -110,7 +105,6 @@ TwoRooms.NotificationsListItemComponent = Ember.Component.extend({
 	},
 
 	didInsertElement: function() {
-		// var self = this;
 		this.showNotification(this.get('duration'));
 	},
 
@@ -120,130 +114,4 @@ TwoRooms.NotificationsListItemComponent = Ember.Component.extend({
 		}
 	}
 
-//	willDestroyElement: function() {
-//	}
-
 });
-
-/** ----------------------------------------------
-  END Notifications
-  --------------------------------------------- */
-
-
-
-
-
-
-
-
-
-// // TwoRooms.Notifications = Ember.Object.create({
-// // 	content: Ember.A(),
-
-
-// // 	// Usage TwoRooms.Notifications.push(message, type = 'warning');
-// // 	push: function(message, type) {
-		
-// // 		if ( ! message ) return;
-
-// // 		if ( ! type || ["success", "info", "warning", "danger"].indexOf(type) == -1 )
-// // 		{
-// // 			type = "warning";
-// // 		}
-
-// // 		this.get('content').pushObject({
-// // 			type: type,
-// // 			message: message
-// // 		});
-// // 	}
-// // });
-
-// TwoRooms.NotificationListComponent = Ember.Component.extend({
-// 		classNames: ['Notifications'],
-
-// 	tagName: 'section',
-
-// 	content: TwoRooms.NotificationsManager.get('content')
-
-// });
-
-// TwoRooms.NotificationListItemComponent = Ember.Component.extend({
-// 	item: null,
-
-//  	classNames: ['Notifications__item', 'alert', 'alert-dismissible', 'ns-effect-scale'],
-
-// 	//classNames: ['alert', 'alert-dismissable'],
-// 	classNameBindings: ['alertType'],
-
-
-// 	alertType: function() {
-// 		return 'alert-' + this.get('item.type');
-// 	}.property('item.type'),
-
-// 	buttonIcon: function() {
-// 		var icon = "fa-times";
-// 		if (this.get('item.type') == 'success') {
-// 			icon = "fa-check";
-// 		}
-// 		return icon;
-// 	}.property('item.type'),
-
-//     duration: 6000,
-
-//     timer: null,
-
-//     showNotification: function(time) {
-//         var self = this;
-//         self.set('timer', window.setTimeout(function() {
-//             self.clearNotification();
-//             self.clearTimeout();
-//         }, time));
-//     },
-
-//     clearNotification: function() {
-//         this.$().fadeOut();
-//         App.NotificationsManager.get('content').removeObject(this.get('content'));
-//         this.set('timer', null);
-//     },
-
-//     clearTimeout: function() {
-//         var self = this;
-//         if (self.get('timer') !== null) {
-//             window.clearTimeout(self.get('timer'));
-//             self.set('timer', null);
-//         }
-//     },
-
-//     didInsertElement: function() {
-//         var self = this;
-//         this.showNotification(self.get('duration'));
-//     },
-
-// //     mouseEnter: function() {
-// //         this.clearTimeout();
-// //     },
-
-// //     mouseLeave: function() {
-// //         var halfSpeedTime = this.get('duration') / 2;
-// //         this.showNotification(halfSpeedTime);
-// //     },
-
-// //     actions: {
-// //         clear: function() {
-// //             this.clearNotification();
-// //         }
-// //     }
-
-
-// 	clearNotification: function() {
-// 		this.$().fadeOut();
-// 		TwoRooms.Notifications.get('content').removeObject(this.get('content'));
-// 	},
-
-// 	actions: {
-// 		clear: function() {
-// 			this.clearNotification();
-// 		}
-
-// 	}
-// });
