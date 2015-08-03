@@ -3,11 +3,15 @@ require 'test_helper'
 class DeckTest < ActiveSupport::TestCase
 
   test "belongs to user" do
-    assert_respond_to decks(:one), :user
+    assert_respond_to decks(:one), :user, "Should belong to user"
   end
 
   test "has_many cards" do
-    assert_respond_to decks(:one), :deck_cards
+    assert_respond_to decks(:one), :deck_cards, "Should have cards"
+  end
+
+  test "has_many games" do
+    assert_respond_to decks(:one), :games, "Should have games"
   end
 
   test "has user name" do

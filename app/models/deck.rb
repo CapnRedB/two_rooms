@@ -1,5 +1,6 @@
 class Deck < ActiveRecord::Base
   belongs_to :user
+  has_many :games
   has_many :deck_cards
   after_create :add_default_cards!
 

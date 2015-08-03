@@ -1,0 +1,53 @@
+<div class="container-fluid offset">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<header><h1>Open Games</h1></header>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Deck</th>
+						<th>Code</th>
+						<th>#</th>
+						<th>Age</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each model as |game|}}
+						<tr>
+							<td>
+								{{game.deck.name}}
+								<small>by {{game.deck.user_name}}</small>
+							</td>
+							<td>
+								{{game.code}}
+							</td>
+							<td>
+								{{game.game_players.count}}
+							</td>
+							<td>
+								{{game.age}}
+							</td>
+							<td>
+								{{#link-to "game.index" game}}Show{{/link-to}}
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>
+							{{#link-to "games.new"}}New{{/link-to}}
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

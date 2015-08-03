@@ -6,5 +6,9 @@ TwoRooms.ApplicationRoute = Ember.Route.extend({
 		
 		this.store.find('card');
 		this.store.find('deck');
+
+		if ( localStorage['token'] != undefined ) {
+			controller.set('signedIn', true);
+		}
 	}
 });

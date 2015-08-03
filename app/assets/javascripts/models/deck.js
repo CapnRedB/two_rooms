@@ -13,7 +13,7 @@ TwoRooms.Deck = DS.Model.extend({
 
   warnings: function() {
   	var warnings = [],
-  		affiliations = ["required", "no_bury", "filler", "parity"];
+  		affiliations = ["required", "no_bury", "if_bury", "filler", "parity"];
 
   	deck_cards = this.get('deck_cards');
   	for (var i in affiliations)
@@ -36,31 +36,6 @@ TwoRooms.Deck = DS.Model.extend({
   	}
   	return warnings.join("");
   }.property('deck_cards.@each.affiliation','deck_cards.@each.card'),
-  // def warnings
-  //   warnings = []
-
-  //   red_counts = {}
-  //   blue_counts = {}
-
-  //   ["required", "no_bury", "filter", "parity"].each do |affiliation|
-  //     red_counts[affiliation] = deck_cards.select{|dc| dc.card.color == 'Red' and dc.affiliation == affiliation}.count
-  //     blue_counts[affiliation] = deck_cards.select{|dc| dc.card.color == 'Blue' and dc.affiliation == affiliation}.count
-
-  //     case red_counts[affiliation] <=> blue_counts[affiliation]
-  //     when -1
-  //       warnings << "This deck has more #{affiliation} blue cards than #{affiliation} red cards. "
-  //     when 1
-  //       warnings << "This deck has more #{affiliation} red cards than #{affiliation} blue cards. "
-  //     end
-  //   end
-
-  //   if warnings.empty?
-  //     null
-  //   else
-  //     #{}"<ul><li>" + warnings.join("</li><li>") + "</li></ul>"
-  //     warnings.join()
-  //   end
-  // end
 
   has_warnings: function() {
   	return this.get('warnings') != "";
@@ -100,6 +75,60 @@ TwoRooms.Deck = DS.Model.extend({
   	}
 
   	return required_count + extendable + " " + parity;
-  }.property('deck_cards.@each.affiliation', 'bury')
+  }.property('deck_cards.@each.affiliation', 'bury'),
+
+  title: function() {
+    return this.get('name') + " by " + this.get('user_name');
+  }.property('name', 'user_name'),
+
+  card_summary: function() {
+    
+    var hash = {};  // [affiliation][title][colors]
+    var lists = {}; // [affiliation][]
+    
+    var deck_cards = this.get('deck_cards');
+    deck_cards.forEach(function(deck_card){
+      var affiliation = deck_card.get('affiliation');
+      var card = deck_card.get('card');
+      var title = card.get('title').replace(/(Red|Blue) /, "");
+      var color = card.get('color');
+      if ( ! hash[affiliation] ) hash[affiliation] = {};
+      if ( ! hash[affiliation][title] ) hash[affiliation][title] = {};
+
+      hash[affiliation][title][color] = true; 
+    });
+
+    for ( var affiliation in hash )
+    {
+      if ( ! lists[affiliation] ) lists[affiliation] = [];
+      for ( var title in hash[affiliation] )
+      {
+        if ( hash[affiliation][title]["Red"] && hash[affiliation][title]["Blue"] )
+        {
+          lists[affiliation].push("r/b " + title);
+        }
+        else
+        {
+          lists[affiliation].push(title);
+        }
+      }
+    }
+    summary = "";
+    for ( var affiliation in lists )
+    {
+      if ( lists[affiliation].length )
+      {
+        summary += affiliation + ": ";
+        last = lists[affiliation].pop();
+        if ( lists[affiliation].length )
+        {
+          summary += lists[affiliation].join(", ") + " and ";
+        }
+        summary += last + ".<br />";
+      }
+    }
+    return summary;
+  }.property('deck_cards.@each.title'),
+
 
 });

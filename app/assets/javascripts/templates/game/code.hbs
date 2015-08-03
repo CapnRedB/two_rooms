@@ -1,0 +1,16 @@
+<div class="container-fluid text-center">
+	<div class="row">
+		<div class="col-xs-12">
+			Use game code:
+			<h1>{{model.code}}</h1>
+			to join
+		</div>
+		<div class="col-xs-12">
+			<img {{bind-attr src=model.join_qr}}/>
+		</div>
+		<br />
+		<div class="col-xs-12">
+			{{#link-to 'game.index' class="btn btn-default"}}Done{{/link-to}}
+		</div>
+	</div>
+</div>

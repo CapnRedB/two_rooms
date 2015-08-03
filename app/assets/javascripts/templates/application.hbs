@@ -1,3 +1,17 @@
 {{!-- {{line-frame id="frame" register-as="lineFrame"}} --}}
 {{notifications-list}}
 {{outlet}}
+<footer id="footer">
+	<div class="row text-center">
+		<div class="col-md-12">
+			{{#if signedIn}}
+				{{#unless onProfile}}
+					{{#link-to "profile" class='btn btn-default btn-xs'}}Home{{/link-to}}
+				{{/unless}}
+			{{else}}
+				<div>Game &copy; 2013 <a href="http://tuesdayknightgames.com/tworoomsandaboom/">Alan Gerding and Sean McCoy</a></div>
+				<div><a href="https://github.com/joflynn/two_rooms">Source <i class="fa fa-github"></i></a></div>
+			{{/if}}	
+		</div>
+	</div>
+</footer>

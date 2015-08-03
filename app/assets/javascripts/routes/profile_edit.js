@@ -15,7 +15,6 @@ TwoRooms.ProfileEditRoute = TwoRooms.AuthenticatedRoute.extend({
 
 			var user_id = localStorage['user_id'];
 			var name = this.controller.get('name');
-//////needs update
 			$.ajax("/users/update.json",{
 					method: "PUT", 
 					data: {user : { name: name} },
