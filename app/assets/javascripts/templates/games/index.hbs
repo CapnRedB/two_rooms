@@ -11,8 +11,7 @@
 					<tr>
 						<th>Deck</th>
 						<th>Code</th>
-						<th>#</th>
-						<th>Age</th>
+						<th title="Current player count">#</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -20,17 +19,15 @@
 					{{#each model as |game|}}
 						<tr>
 							<td>
-								{{game.deck.name}}
-								<small>by {{game.deck.user_name}}</small>
+								{{game.deck.name}} <small>by {{game.deck.user_name}}</small>
+								<br />
+								{{format-age game.created_at}}
 							</td>
 							<td>
 								{{game.code}}
 							</td>
-							<td>
-								{{game.game_players.count}}
-							</td>
-							<td>
-								{{game.age}}
+							<td title="Game created">
+								{{game.players.length}}
 							</td>
 							<td>
 								{{#link-to "game.index" game}}Show{{/link-to}}
@@ -40,6 +37,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
+						<th></th>
 						<th></th>
 						<th></th>
 						<th>

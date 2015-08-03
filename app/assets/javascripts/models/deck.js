@@ -74,8 +74,26 @@ TwoRooms.Deck = DS.Model.extend({
   		required_count--;
   	}
 
-  	return required_count + extendable + " " + parity;
+    return required_count + extendable + " " + parity;
   }.property('deck_cards.@each.affiliation', 'bury'),
+
+  min_player_count: function(){
+    var deck_cards = this.get('deck_cards');
+    var has_parity = false,
+      required_count = 0;
+
+    if ( deck_cards )
+    {
+      required_count = deck_cards.filterBy('affiliation', 'required').get('length');
+    }
+
+    if ( this.get('bury') )
+    {
+      required_count--;
+    }
+
+    return required_count;
+  },
 
   title: function() {
     return this.get('name') + " by " + this.get('user_name');

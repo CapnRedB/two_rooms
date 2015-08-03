@@ -1,10 +1,15 @@
-<div class="container-fluid text-center">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12">
-			Join code: {{#link-to "game.code" model}}{{model.code}}{{/link-to}}
+			{{deck-name deck=deck}}
+		</div>
+		<div class="col-xs-12">
+			{{game.type_description}}
+		</div>
+		<div class="col-xs-12">
+			Join code: {{#link-to "game.code" model tagName="code"}}{{model.code}}{{/link-to}}
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="col-xs-6">
 			<div>
@@ -12,20 +17,20 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Player</th>
-						<th></th>
+						<th>Players</th>
+						<th>{{model.players.length}} / {{model.deck.player_count}}</th>
 					</tr>
 				</thead>
 				<tbody>
-					{{#each model.game_player as |game_player|}}
+					{{#each model.players as |player|}}
 						<tr>
-							<td>{{game_player.name}}</td>
+							<td>{{player.name}}</td>
 							<td>
-								{{#if game_player.is_self}}
-          							{{confirm-button action="leaveGame" label="Leave" param=game_player}}
+								{{#if player.is_self}}
+          							{{confirm-button action="leaveGame" label="Leave" param=player}}
 								{{else}}
 									{{#if model.is_owned}}
-										{{confirm-button action="leaveGame" label="Kick" param=game_player}}
+										{{confirm-button action="leaveGame" label="Kick" param=player}}
 									{{/if}}
 								{{/if}}
 							</td>
@@ -33,6 +38,45 @@
 					{{/each}}
 				</tbody>
 			</table>
+		</div>
+		<div class="col-xs-6">
+			<div>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cards</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each model.actual_cards as |card|}}
+						{{#link-to "card" card tagName="tr"}}
+							<td>{{short-card card=card}}</td>
+						{{/link-to}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	    <div class="col-xs-12">
+          Rules
+          <ul>
+            <li>
+              {{#if model.deck.bury}}
+                Burying a card.
+              {{else}}
+                No Buried Card.
+              {{/if}}
+            </li>
+          </ul>
+        </div>
+		<div class="col-xs-12 text-center">
+			{{#if model.is_owned}}
+				{{#if model.has_enough_players}}
+					<button {{action "startGame"}} class="btn-btn-primary">Start Game</button>
+				{{else}}
+					<button class="btn btn-default" disabled>Needs more players</button>
+				{{/if}}
+			{{/if}}
 		</div>
 	</div>
 </div>

@@ -1,0 +1,17 @@
+{{#if noLink}}
+	{{#unless noLabel}}Deck:{{/unless}}
+	<span class="deck">
+		<span class="name">{{deck.name}}</span>
+		<small>
+			by <span class="user">{{deck.user_name}}</span>
+		</small>
+	</span>
+{{else}}
+	{{#unless noLabel}}Deck:{{/unless}}
+	{{#link-to "deck" deck tagName="span" class="deck"}}
+		<span class="name">{{deck.name}}</span>
+		<small>
+			by <span class="user">{{deck.user_name}}</span>
+		</small>
+	{{/link-to}}
+{{/if}}

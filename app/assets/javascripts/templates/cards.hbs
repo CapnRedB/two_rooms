@@ -17,15 +17,8 @@
 					{{#each model as |card|}}
 						{{#link-to "card" card tagName="tr"}}
 							<td>
-								<span class="card">
-									<span class="color {{card.color}}" data-color="{{card.color}}">
-										<span class="faction {{card.faction}}" data-faction="{{card.faction}}" title="{{card.team}}">
-											{{card.title}}
-										</span>
-									</span>
-								</span>
-								<br />
-								<small>{{card.subtitle}}</small>
+								{{short-card card=card}}
+ 								<small>{{card.subtitle}}</small>
 							</td>
 							<td>
 								{{#link-to "card" card}}Show{{/link-to}}
