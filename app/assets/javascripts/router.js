@@ -16,6 +16,7 @@ TwoRooms.Router.map(function() {
   }); 
   
   this.route('game', {path: '/game/:game_id'}, function(){
+    this.route('code');
   }); 
 
 

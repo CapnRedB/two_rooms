@@ -16,6 +16,7 @@
 //= require ember-data
 //= require ember-template-compiler
 //= require active-model-adapter
+//= require moment
 //= require markdown
 //= require_self
 //= require ./two_rooms

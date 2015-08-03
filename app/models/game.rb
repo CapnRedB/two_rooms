@@ -7,7 +7,11 @@ class Game < ActiveRecord::Base
 
   before_create :ensure_code
   before_create :default_status
+  after_create :add_owner_as_player
 
+  # def to_param
+  #   code
+  # end
 
   def default_status
     self.status = :recruiting
@@ -34,7 +38,13 @@ class Game < ActiveRecord::Base
     end
 
     def self.make_code(length)
-      Array.new(length){[*"a".."z", *"0".."9"].sample}.join
+      Array.new(length){[*"a".."z", *"0".."9"].reject{|l| "il10o8B3Evumnr".include? l}.sample}.join
     end
     
+    def add_owner_as_player
+      if user
+        self.game_players << GamePlayer.new( player: user )
+        save
+      end
+    end
 end
