@@ -28,19 +28,6 @@ class GameTest < ActiveSupport::TestCase
     assert games(:one).code.match(/^[a-z0-9]*$/), "Should only contain letters and numbers #{games(:one).code}"
   end
 
-<<<<<<< HEAD
-  test "has many rounds" do
-    assert_respond_to games(:one), :rounds, "Game should have many rounds"
-    assert_equal games(:one).rounds.length, 3, "Basic game has three rounds"
-  end
-
-  test "adds self as player on create" do
-    g = Game.new deck: decks(:one), game_type: "Basic", user: users(:joe)
-    assert g.save, "Game should save"
-    assert_equal g.game_players.count, 1, "Should have one player on save"
-    assert_equal g.game_players.first.player, users(:joe), "Admin of game should automatically be added as player"
-  end
-=======
   # test "param is code" do
   #   games(:one).save
   #   assert_equal games(:one).to_param, games(:one).code, "Param should be code, not id"
@@ -49,7 +36,7 @@ class GameTest < ActiveSupport::TestCase
 
   test "adds self to game on create" do
     g = Game.new user: users(:joe)
-    g.save
+    assert g.save, "Game should save"
     assert_equal g.game_players.count, 1, "Game should have one player on create"
     assert_equal g.game_players.first.player, users(:joe), "The player should be the user who created the game"
   end
@@ -71,6 +58,4 @@ class GameTest < ActiveSupport::TestCase
   #     end
   #   end
   # end
-
->>>>>>> feature-game-um
 end
