@@ -93,7 +93,7 @@ TwoRooms.Deck = DS.Model.extend({
     }
 
     return required_count;
-  },
+  }.property('deck_cards.@each.affiliation', 'bury'),
 
   title: function() {
     return this.get('name') + " by " + this.get('user_name');

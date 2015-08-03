@@ -20,10 +20,7 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate_user_from_token!
-      #p "authenticate_user_from_token"
       authenticate_with_http_token do |token, options|
-        # p token
-        # p options
         user_email = options[:email].presence
         user = user_email && User.find_by_email(user_email)
 

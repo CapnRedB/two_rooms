@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :decks
   resources :deck_cards
 
+  get 'games/lookup/:code' => "games#lookup"
   resources :games
   resources :game_players
   resources :game_swaps

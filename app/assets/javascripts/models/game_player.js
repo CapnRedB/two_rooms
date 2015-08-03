@@ -3,7 +3,7 @@
 TwoRooms.GamePlayer = DS.Model.extend({
   game: DS.belongsTo('game'),
   user_id: DS.attr('number'),
-  card_id: DS.belongsTo('card'),
+  card: DS.belongsTo('card'),
   location: DS.attr('string'),
   leader: DS.attr('boolean'),
   voting_for: DS.belongsTo('game_player', {inverse: 'supporters'}),

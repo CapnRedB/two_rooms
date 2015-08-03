@@ -13,6 +13,7 @@ TwoRooms.Router.map(function() {
   this.route('games', function(){
     this.route('new');
     this.route('join');
+    this.route('code', {path: '/join/:code'});
   }); 
   
   this.route('game', {path: '/game/:game_id'}, function(){

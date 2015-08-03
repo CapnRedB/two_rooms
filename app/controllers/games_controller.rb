@@ -1,6 +1,9 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
+  skip_before_filter :authenticate_user_from_token!, only: [:lookup]
+  skip_before_filter :authenticate_user!, only: [:lookup]
+
   # GET /games
   # GET /games.json
   def index
@@ -18,6 +21,19 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @game }
+    end
+  end
+
+  def lookup
+    @game = Game.where(status: "recruiting", code: params[:code].downcase).first
+    respond_to do |format|
+      if ( @game )
+        format.html # show.html.erb
+        format.json { render json: @game }
+      else
+        format.html # show.html.erb
+        format.json { render json: {error: "Unable to find game"}, status: :not_found }
+      end
     end
   end
 
@@ -74,7 +90,7 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
-      #@game = Game.where( code: params[:id]).find
+      #@game = Game.where( code: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

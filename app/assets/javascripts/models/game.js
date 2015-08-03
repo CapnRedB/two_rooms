@@ -27,7 +27,7 @@ TwoRooms.Game = DS.Model.extend({
   }.property('join_link'),
 
   actual_cards: function() {
-    var count = this.get('players').length;
+    var count = this.get('players').get('length');
     var bury = this.get('deck').get('bury');
     if ( bury ) {
       count++;
@@ -56,10 +56,10 @@ TwoRooms.Game = DS.Model.extend({
       }
     });
 
-    if ( ( count % 2 == 0 ) && by_affiliation["parity"].length )
+    if ( ( count % 2 == 1 ) && by_affiliation["parity"].length )
     {
       //var idx = Math.floor(Math.random() * by_affiliation["parity"].length);
-      var card = by_affiliation["parity"].firstObject;
+      var card = by_affiliation["parity"].get('firstObject');
       cards.push(card);
     }
 
@@ -71,7 +71,7 @@ TwoRooms.Game = DS.Model.extend({
     }
 
     return cards;
-  }.property('players'),
+  }.property('players.length', 'deck.bury'),
 
   type_description: function(){
     if ( this.get("game_type") == "Basic" )
@@ -88,8 +88,7 @@ TwoRooms.Game = DS.Model.extend({
   has_enough_players: function() {
     if ( this.get('deck') )
     {
-      return this.get('players').length >= this.get('deck').get('min_player_count')
-
+      return this.get('players').get('length') >= this.get('deck').get('min_player_count')
     }
     return false;
   }.property('deck', 'players')
