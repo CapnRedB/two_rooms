@@ -23,5 +23,4 @@ TwoRooms.Game = DS.Model.extend({
     var qr_base = "http://api.qrserver.com/v1/create-qr-code/?size=275x275&data=";
     return qr_base + this.get('join_link').replace(/#/, "%23");
   }.property('join_link'),
-
 });
