@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
 
+
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations' }
   devise_scope :user do
     get '/users/signed_in', to: 'users/sessions#show', as: 'session'
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
   resources :deck_cards
 
   get 'games/lookup/:code' => "games#lookup"
-  resources :games
+  resources :games do
+    get :logs, to: 'game_logs#index', as: 'logs'
+  end
   resources :game_players
   resources :game_swaps
 

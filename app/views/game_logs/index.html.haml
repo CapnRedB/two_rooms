@@ -1,0 +1,27 @@
+%h1 Listing game_logs
+
+%table
+  %thead
+    %tr
+      %th Game
+      %th Event
+      %th Command
+      %th Description
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @game_logs.each do |game_log|
+      %tr
+        %td= game_log.game_id
+        %td= game_log.event
+        %td= game_log.command
+        %td= game_log.description
+        %td= link_to 'Show', game_log
+        %td= link_to 'Edit', edit_game_log_path(game_log)
+        %td= link_to 'Destroy', game_log, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Game log', new_game_log_path

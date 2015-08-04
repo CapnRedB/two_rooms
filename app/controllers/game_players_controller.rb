@@ -63,6 +63,7 @@ class GamePlayersController < ApplicationController
   # DELETE /game_players/1
   # DELETE /game_players/1.json
   def destroy
+    @game_player.game.touch
     @game_player.destroy
     respond_to do |format|
       format.html { redirect_to game_players_url }

@@ -10,4 +10,5 @@ class GamePlayer < ActiveRecord::Base
 
   validates :game, presence: true
   validates :player, presence: true
+  validates :user_id, uniqueness: { scope: :game }
 end

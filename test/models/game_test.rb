@@ -18,6 +18,10 @@ class GameTest < ActiveSupport::TestCase
     assert_respond_to games(:one), :user, "Game should have an owner"
   end
 
+  test "has many logs" do
+    assert_respond_to games(:one), :logs, "Game should have logs"
+  end
+
   test "generates a code" do
     games(:one).save
 
@@ -58,4 +62,6 @@ class GameTest < ActiveSupport::TestCase
   #     end
   #   end
   # end
+
+  
 end

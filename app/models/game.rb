@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   has_many :game_players
   has_many :game_swaps
+  has_many :logs, class_name: "GameLog"
   has_many :rounds, foreign_key: :game_type, primary_key: :game_type
 
   belongs_to :user
@@ -57,4 +58,8 @@ class Game < ActiveRecord::Base
       end
     end
 
+    def journal(event, command, description)
+      log = self.logs.new(event: event, command: command, description: description)
+      log.save
+    end
 end
