@@ -9,3 +9,220 @@ two:
   deck_id: 1
   card_id: 2
   affiliation: required
+
+
+#basic
+a:
+  deck_id: 10
+  card_id: 1
+  affiliation: required
+b:
+  deck_id: 10
+  card_id: 2
+  affiliation: required
+c:
+  deck_id: 10
+  card_id: 6
+  affiliation: filler
+d:
+  deck_id: 10
+  card_id: 7
+  affiliation: filler
+e:
+  deck_id: 10
+  card_id: 5
+  affiliation: parity
+
+
+
+
+# basic bury
+f:
+  deck_id: 11
+  card_id: 1
+  affiliation: required
+
+g:
+  deck_id: 11
+  card_id: 2
+  affiliation: required
+
+h:
+  deck_id: 11
+  card_id: 8
+  affiliation: if_bury
+
+i:
+  deck_id: 11
+  card_id: 9
+  affiliation: if_bury
+
+j:
+  deck_id: 11
+  card_id: 5
+  affiliation: parity
+
+k:
+  deck_id: 11
+  card_id: 6
+  affiliation: filler
+
+l:
+  deck_id: 11
+  card_id: 7
+  affiliation: filler
+
+
+#advanced bury
+m:
+  deck_id: 12
+  card_id: 1
+  affiliation: required
+
+n:
+  deck_id: 12
+  card_id: 2
+  affiliation: required
+
+o:
+  deck_id: 12
+  card_id: 8
+  affiliation: if_bury
+
+p:
+  deck_id: 12
+  card_id: 9
+  affiliation: if_bury
+
+q:
+  deck_id: 12
+  card_id: 5
+  affiliation: parity
+
+r:
+  deck_id: 12
+  card_id: 6
+  affiliation: filler
+
+s:
+  deck_id: 12
+  card_id: 7
+  affiliation: filler
+
+t:
+  deck_id: 12
+  card_id: 10
+  affiliation: no_bury
+
+u:
+  deck_id: 12
+  card_id: 11
+  affiliation: no_bury
+
+v:
+  deck_id: 12
+  card_id: 12
+  affiliation: no_bury
+
+
+#adulterous whale:
+w:
+  deck_id: 13
+  card_id: 1
+  affiliation: required
+
+x:
+  deck_id: 13
+  card_id: 2
+  affiliation: required
+
+y:
+  deck_id: 13
+  card_id: 13
+  affiliation: required
+
+z:
+  deck_id: 13
+  card_id: 14
+  affiliation: required
+
+aa:
+  deck_id: 13
+  card_id: 15
+  affiliation: required
+
+ab:
+  deck_id: 13
+  card_id: 16
+  affiliation: required
+
+#no parity
+ac:
+  deck_id: 14
+  card_id: 1
+  affiliation: required
+
+ad:
+  deck_id: 14
+  card_id: 2
+  affiliation: required
+
+ae:
+  deck_id: 14
+  card_id: 8
+  affiliation: if_bury
+
+af:
+  deck_id: 14
+  card_id: 9
+  affiliation: if_bury
+
+ag:
+  deck_id: 14
+  card_id: 6
+  affiliation: filler
+
+ah:
+  deck_id: 14
+  card_id: 7
+  affiliation: filler
+
+#three_filler
+ai:
+  deck_id: 15
+  card_id: 1
+  affiliation: required
+
+aj:
+  deck_id: 15
+  card_id: 2
+  affiliation: required
+
+ak:
+  deck_id: 15
+  card_id: 5
+  affiliation: required
+
+al:
+  deck_id: 15
+  card_id: 17
+  affiliation: filler
+
+am:
+  deck_id: 15
+  card_id: 18
+  affiliation: filler
+
+an:
+  deck_id: 15
+  card_id: 19
+  affiliation: filler
+
+
+
+
+
+
+
+
+

@@ -17,6 +17,11 @@ class Game < ActiveRecord::Base
   # end
 
 
+  def journal(event, command, description)
+    log = self.logs.new(event: event, command: command, description: description)
+    log.save
+  end
+
 
   private 
 
@@ -56,10 +61,5 @@ class Game < ActiveRecord::Base
         self.game_players << GamePlayer.new( player: user )
         save
       end
-    end
-
-    def journal(event, command, description)
-      log = self.logs.new(event: event, command: command, description: description)
-      log.save
     end
 end

@@ -17,3 +17,13 @@ two:
   status: finished
   outcome: "Blue team won, President was in Room A, bomber was in Room B"
   code: abcf
+
+
+# flow test data
+
+recruiting:
+  id: 3
+  user_id: 1
+  deck_id: 10
+  game_type: Basic
+  status: recruiting

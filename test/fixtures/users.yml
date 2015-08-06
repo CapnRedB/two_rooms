@@ -15,3 +15,33 @@ sarah:
   name: Sarah
   email: sarah@example.com
   encrypted_password: blahblahblah
+
+three:
+  name: three
+  email: three@example.com
+  encrypted_password: blahblahblah
+
+four:
+  name: four
+  email: four@example.com
+  encrypted_password: blahblahblah
+
+five:
+  name: five
+  email: five@example.com
+  encrypted_password: blahblahblah
+
+six:
+  name: six
+  email: six@example.com
+  encrypted_password: blahblahblah
+
+seven:
+  name: seven
+  email: seven@example.com
+  encrypted_password: blahblahblah
+
+eight:
+  name: eight
+  email: eight@example.com
+  encrypted_password: blahblahblah

@@ -32,12 +32,6 @@ class GameTest < ActiveSupport::TestCase
     assert games(:one).code.match(/^[a-z0-9]*$/), "Should only contain letters and numbers #{games(:one).code}"
   end
 
-  # test "param is code" do
-  #   games(:one).save
-  #   assert_equal games(:one).to_param, games(:one).code, "Param should be code, not id"
-  #   assert_not_equal games(:one).to_param, games(:one).id, "Param should not be id"
-  # end
-
   test "adds self to game on create" do
     g = Game.new user: users(:joe)
     assert g.save, "Game should save"
@@ -63,5 +57,19 @@ class GameTest < ActiveSupport::TestCase
   #   end
   # end
 
+  test "it logs stuff" do
+    g = games(:one)
+
+    prev = g.logs.count
+    g.journal("Advance", "start", "Starting game")
+    assert_equal g.logs.count, prev + 1, "Should save a log"
+  end
+
+  #flow
+
+  test "starts a game" do
+    g = games(:recruiting)
+    p g
+  end
   
 end

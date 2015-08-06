@@ -13,21 +13,25 @@ bomber:
   faction: Red
 
 red_spy: 
+  id: 3
   title: Spy
   color: Blue
   faction: Red
 
 red_shy:
+  id: 4
   title: Shy Guy
   color: Red
   faction: Red
 
 gambler:
+  id: 5
   title: Gambler
   color: Grey
   faction: Grey
 
 red_team:
+  id: 6
   title: Red Team
   faction: Red
 
@@ -35,3 +39,65 @@ blue_team:
   id: 7
   title: Blue Team
   faction: Blue
+
+vp:
+  id: 8
+  title: Vice President
+  faction: Blue
+
+martyr:
+  id: 9
+  title: Martyr
+  faction: Red
+
+sniper:
+  id: 10
+  title: Sniper
+  faction: Grey
+
+decoy:
+  id: 11
+  title: Decoy
+  faction: Grey
+
+target:
+  id: 12
+  title: Target
+  faction: Grey
+
+ahab:
+  id: 13
+  title: Ahab
+  faction: Grey
+
+moby:
+  id: 14
+  title: Moby
+  faction: Grey
+
+wife:
+  id: 15
+  title: Wife
+  faction: Grey
+
+mistress:
+  id: 16
+  title: Mistress
+  faction: Grey
+
+agoraphobe:
+  id: 17
+  title: agoraphobe
+  faction: Grey
+
+traveler:
+  id: 18
+  title: Traveler
+  faction: Grey
+
+minion:
+  id: 19
+  title: Minion
+  faction: Grey
+
+

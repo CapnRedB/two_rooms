@@ -11,3 +11,41 @@ two:
   name: Standard
   description: MyText
   bury: false
+
+
+basic:
+  id: 10
+  user_id: 1
+  name: Starter Deck
+  description: This is the most basic Deck
+  bury: false
+
+basic_bury:
+  id: 11
+  user_id: 1
+  name: Basic deck with bury
+  bury: true
+
+advanced_bury:
+  id: 12
+  user_id: 1
+  name: A bury deck with no burys
+  bury: true
+
+adulterous_whale:
+  id: 13
+  user_id: 1
+  name: A Six player game
+  bury: false
+
+no_parity:
+  id: 14
+  user_id: 1
+  name: A deck that only supports even counts (odd with bury)
+  bury: true
+
+three_filler:
+  id: 15
+  user_id: 1
+  name: A deck that only supports multiples of 3
+  bury: false
