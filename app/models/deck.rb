@@ -59,7 +59,7 @@ class Deck < ActiveRecord::Base
   
 
   def generate(player_count, options = {})
-    options.reverse_merge! bury: bury
+    options.reverse_merge! bury: bury, seed: Random.new_seed
     raise(UnableToBuryError, "Deck not configured to bury a card") if options[:bury] and ! bury
 
     count = player_count
@@ -102,15 +102,17 @@ class Deck < ActiveRecord::Base
     card_set = {}
     if options[:bury]
       buryable = cards.select{|c| ! no_burys.include? c }
-      #p buryable.count
-      buried = buryable.sample
-      #p buried
+
+
+      buried = buryable.sample(random: Random.new(options[:seed]))
+
       cards.delete_at cards.index(buried)
 
       card_set[:no_burys] = no_burys
       card_set[:buryable] = buryable
       card_set[:buried] = buried
       card_set[:cards] = cards 
+
 
         #debug
       # puts "#{player_count} #{options.inspect}"
@@ -141,16 +143,8 @@ class Deck < ActiveRecord::Base
     card_set
   end
 
-  class DeckError < Exception
-  end
-
-  class NotEnoughPlayersError < DeckError
-  end
-
-  class UnsupportedPlayerCountError < DeckError
-  end
-
-  class UnableToBuryError < DeckError
-  end
-
+  class DeckError < Exception; end
+  class NotEnoughPlayersError < DeckError; end
+  class UnsupportedPlayerCountError < DeckError; end
+  class UnableToBuryError < DeckError; end
 end

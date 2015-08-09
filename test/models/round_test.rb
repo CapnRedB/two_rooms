@@ -53,4 +53,21 @@ class RoundTest < ActiveSupport::TestCase
     assert rounds(:one).swaps.count == 3, "Basic - Round 1 has three swaps"
   end
 
+  test "finds a swap for player count" do
+    0.upto(1).each do |n|
+      assert_not rounds(:one).swap_for(n)
+    end
+    2.upto(6).each do |n|
+      assert rounds(:one).swap_for(n)
+      assert_equal 2, rounds(:one).swap_for(n).count
+    end
+    7.upto(21).each do |n|
+      assert rounds(:one).swap_for(n)
+      assert_equal 3, rounds(:one).swap_for(n).count
+    end
+    22.upto(30).each do |n|
+      assert rounds(:one).swap_for(n)
+      assert_equal 4, rounds(:one).swap_for(n).count
+    end
+  end
 end

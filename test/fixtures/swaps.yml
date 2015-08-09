@@ -2,17 +2,33 @@
 
 one:
   round_id: 1
-  player_min: 6
-  player_max: 8
+  player_min: 2
+  player_max: 6
   count: 2
 
 two:
   round_id: 1
-  player_min: 9
-  player_max: 17
+  player_min: 7
+  player_max: 21
   count: 3
 
 three:
   round_id: 1
-  player_min: 18
+  player_min: 22
   count: 4
+
+four: 
+  round_id: 2
+  player_min: 6
+  player_max: 21
+  count: 1
+
+five:
+  round_id: 2
+  player_min: 22
+  count: 2
+
+six:
+  round_id: 4
+  player_min: 6
+  count: 1

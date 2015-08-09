@@ -32,6 +32,15 @@ class GameTest < ActiveSupport::TestCase
     assert games(:one).code.match(/^[a-z0-9]*$/), "Should only contain letters and numbers #{games(:one).code}"
   end
 
+  test "generates a seed" do
+    g = Game.new
+    g.save
+    orig = g.seed
+    assert g.seed, "Should generate a seed when saved"
+    g.save
+    assert_equal orig, g.seed, "Should not save after create"
+  end
+
   test "adds self to game on create" do
     g = Game.new user: users(:joe)
     assert g.save, "Game should save"
@@ -69,7 +78,19 @@ class GameTest < ActiveSupport::TestCase
 
   test "starts a game" do
     g = games(:recruiting)
-    p g
+    assert_equal "recruiting", g.status, "Should be recruiting"
+    g.advance
+    assert_equal "round_1", g.status, "Should be round_1"
+  end
+
+  test "can't advance a finished game" do
+    g = games(:recruiting)
+    g.status = :finished
+    g.save
+
+    assert_raises(Game::UnableToAdvanceError) do
+      g.advance
+    end
   end
   
 end

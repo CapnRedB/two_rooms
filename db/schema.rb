@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804151409) do
+ActiveRecord::Schema.define(version: 20150806201506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,13 @@ ActiveRecord::Schema.define(version: 20150804151409) do
     t.string   "faction"
     t.text     "strategy"
     t.string   "url"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "sort_order"
-    t.integer  "quantity",         default: 1
+    t.integer  "quantity",            default: 1
     t.text     "required_text"
     t.text     "recommended_text"
+    t.string   "default_affiliation", default: "required"
   end
 
   create_table "deck_cards", force: :cascade do |t|
@@ -97,6 +98,8 @@ ActiveRecord::Schema.define(version: 20150804151409) do
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "bury"
+    t.string   "seed"
   end
 
   create_table "identities", force: :cascade do |t|

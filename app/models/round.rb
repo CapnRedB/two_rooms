@@ -25,6 +25,13 @@ class Round < ActiveRecord::Base
   end
 
 
+  def swap_for(count)
+    swaps.each do |swap|
+      return swap if swap.include? count
+    end
+    nil
+  end
+
 
   #for pdf creation
 

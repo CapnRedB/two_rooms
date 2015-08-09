@@ -28,30 +28,30 @@ three:
 #flow
 
 recruiting_one:
-  game_id: 1
+  game_id: 3
   player: users(:joe)
 
 recruiting_two:
-  game_id: 1
+  game_id: 3
   player: users(:sarah)
 
 recruiting_three:
-  game_id: 1
+  game_id: 3
   player: users(:three)
 
 recruiting_four:
-  game_id: 1
+  game_id: 3
   player: users(:four)
 
 recruiting_five:
-  game_id: 1
+  game_id: 3
   player: users(:five)
 
 recruiting_six:
-  game_id: 1
+  game_id: 3
   player: users(:six)
 
 recruiting_seven:
-  game_id: 1
+  game_id: 3
   player: users(:seven)
 
